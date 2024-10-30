@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./components/index.js";
+import useCustomCursor from "./hooks/useCustomCursor.js";
+import SectionIndicator from "./components/SectionIndicator.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+    useCustomCursor();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const sections = [<HeroSection />, <SkillsSection />, <ProjectsSection />, <ContactSection />];
+
+    const getSectionColor = (index) => {
+        switch (index) {
+            case 0:
+                return "#da3030";
+            case 1:
+                return "#25ae50";
+            case 2:
+                return "#61c5a7";
+            default:
+                return "#a41eff";
+        }
+    };
+
+    return (
+        <div className='w-full h-screen relative sections'>
+            {sections.map((Section, index) => (
+                <section key={index} className="section" style={{ backgroundColor: getSectionColor(index) }}>
+                    {Section}
+                </section>
+            ))}
+            <SectionIndicator sections={sections} />
+        </div>
+    );
 }
 
-export default App
+export default App;
