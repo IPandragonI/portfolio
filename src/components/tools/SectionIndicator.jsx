@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
 function SectionIndicator({ sections }) {
@@ -29,15 +30,19 @@ function SectionIndicator({ sections }) {
     }, []);
 
     return (
-        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2">
+        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 section-indicator">
             {sections.map((_, index) => (
                 <div
                     key={index}
-                    className={`w-3 h-3 rounded-full ${index === activeSection ? 'bg-orange-400' : 'bg-gray-200'}`}
+                    className={`w-4 h-4 rounded-full ${index === activeSection ? 'bg-blue-500' : 'bg-gray-200'}`}
                 ></div>
             ))}
         </div>
     );
 }
+
+SectionIndicator.propTypes = {
+    sections: PropTypes.array.isRequired
+};
 
 export default SectionIndicator;

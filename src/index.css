@@ -2,35 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary-color: #ff923e;
+    --secondary-color: #f7f7f7;
+    --tertiary-color: #333;
+
+    --section-color-1: #F2E5BF;
+    --section-color-2: #257180;
+    --section-color-3: #FD8B51;
+    --section-color-4: #CB6040;
+}
+
 .sections {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100vh;
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    .section {
+        scroll-snap-align: start;
+        height: 100vh;
+        font-size: 2rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .section:nth-child(1) {
+        background-color: var(--section-color-1);
+    }
+    .section:nth-child(2) {
+        background-color: var(--section-color-2);
+    }
+    .section:nth-child(3) {
+        background-color: var(--section-color-3);
+    }
+    .section:nth-child(4) {
+        background-color: var(--section-color-4);
+    }
+
+
+    .section-indicator div {
+        transition: background-color 0.3s ease-in-out;
+    }
 }
 
 .sections::-webkit-scrollbar {
     display: none;
 }
 
-.section {
-    scroll-snap-align: start;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    width: 100%;
-}
-
 .cursor {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: rgb(255, 146, 62);
+    background-color: var(--primary-color);
     position: absolute;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .cursor {
+        display: none;
+    }
 }
