@@ -14,6 +14,8 @@ export default {
         'section-2': '#257180',
         'section-3': '#FD8B51',
         'section-4': '#CB6040',
+        'title-h1' : '#07313a',
+        'title-h2' : '#777'
       },
     },
   },

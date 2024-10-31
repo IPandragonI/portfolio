@@ -6,11 +6,24 @@
     --primary-color: #ff923e;
     --secondary-color: #f7f7f7;
     --tertiary-color: #333;
+    --title-color: #07313a;
+    --secondary-title-color: #777;
 
     --section-color-1: #F2E5BF;
     --section-color-2: #257180;
     --section-color-3: #FD8B51;
     --section-color-4: #CB6040;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--title-color);
+}
+
+h2 {
+    font-size: 1.3rem;
+    color: var(--secondary-title-color);
 }
 
 .sections {
@@ -33,19 +46,22 @@
     .section:nth-child(1) {
         background-color: var(--section-color-1);
     }
+
     .section:nth-child(2) {
         background-color: var(--section-color-2);
     }
+
     .section:nth-child(3) {
         background-color: var(--section-color-3);
     }
+
     .section:nth-child(4) {
         background-color: var(--section-color-4);
     }
 
 
     .section-indicator div {
-        transition: background-color 0.3s ease-in-out;
+        transition: background-color 0.3s ease;
     }
 }
 
@@ -57,15 +73,80 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
     position: absolute;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 1000;
 }
 
-@media (max-width: 768px) {
-    .cursor {
-        display: none;
-    }
+
+/** LanguageSwitch */
+.toggle-switch {
+    position: relative;
+    width: 70px;
+    height: 35px;
+    background-color: #87CEEB;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color .4s ease;
+}
+
+.toggle-switch .switch {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: left .4s cubic-bezier(0.68, -0.55, 0.17, 1.55);
+}
+
+.toggle-switch.french .switch {
+    left: 10px;
+}
+
+.toggle-switch.english .switch {
+    left: 35px;
+    background-color: black;
+}
+
+.toggle-switch.french {
+    background-color: #87CEEB;
+}
+
+.toggle-switch.english {
+    background-color: #2C3E50;
+}
+
+.fr {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 40px;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.en {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 40px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.toggle-switch.english .fr {
+    opacity: 0;
+}
+
+.toggle-switch.english .en {
+    opacity: 1;
 }
