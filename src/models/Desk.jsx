@@ -2,7 +2,7 @@
 import {useRef} from "react";
 import {useGLTF} from "@react-three/drei";
 
-import deskScene from "../assets/3d/desk.glb";
+import deskScene from "../assets/3d/new_desk.glb";
 
 export function Desk(props) {
     const deskRef = useRef();

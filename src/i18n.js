@@ -6,11 +6,11 @@ import translationEN from './locales/en/translation.json';
 import translationFR from './locales/fr/translation.json';
 
 const resources = {
-    en: {
-        translation: translationEN
-    },
     fr: {
         translation: translationFR
+    },
+    en: {
+        translation: translationEN
     }
 };
 
@@ -23,6 +23,6 @@ i18n
         interpolation: {
             escapeValue: false
         }
-    });
+    }).then(r => null);
 
 export default i18n;

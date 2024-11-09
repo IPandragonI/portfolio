@@ -2,20 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Poppins";
+    src: url("src/assets/font/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    display: block;
+    animation: fadeIn 2s ease-in-out;
+}
+
 :root {
-    --cursor-color: #333;
-    --title-color: #137D97;
-    --secondary-title-color: #031C3E;
+    --cursor-color: #137D97;
+    --title-color: #091434;
+    --secondary-title-color: #82858a;
+    font-family: Poppins, sans-serif;
 }
 
 h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
+    font-size: 4.3rem;
+    font-weight: 600;
     color: var(--title-color);
 }
 
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--secondary-title-color);
 }
 
@@ -56,13 +78,38 @@ h2 {
     z-index: 1000;
 }
 
+.mouse{
+    width: 24px;
+    height: 35px;
+    border-radius: 50px;
+    border: .2rem solid #031C3E;
+    overflow: hidden;
+}
+
+.scrollOnMouse{
+    width: 5px;
+    height: 10px;
+    background-color: #031C3E;
+    border-radius: 50px;
+    overflow: hidden;
+    bottom: 30px;
+    animation: scrollAnimation 3s infinite cubic-bezier(0.68, -0.55, 0.17, 1.55);
+}
+
+@keyframes scrollAnimation {
+    0%, 100% {
+        bottom: 35px;
+    }
+    50% {
+        bottom: 28px;
+    }
+}
 
 /** LanguageSwitch */
 .toggle-switch {
     position: relative;
-    width: 70px;
-    height: 35px;
-    background-color: #87CEEB;
+    width: 55px;
+    height: 25px;
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -74,8 +121,8 @@ h2 {
     position: absolute;
     top: 50%;
     left: 10px;
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     background-color: #eeee;
     border-radius: 50%;
     transform: translateY(-50%);
@@ -87,8 +134,8 @@ h2 {
 }
 
 .toggle-switch.english .switch {
-    left: 35px;
-    background-color: #222;
+    left: 32px;;
+    background-color: #bad2ff;
 }
 
 .toggle-switch.french {
@@ -96,7 +143,7 @@ h2 {
 }
 
 .toggle-switch.english {
-    background-color: #23627D;
+    background-color: #031C3E;
 }
 
 .fr {

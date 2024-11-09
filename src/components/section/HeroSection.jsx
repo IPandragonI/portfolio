@@ -1,8 +1,8 @@
 
 import { useTranslation } from "react-i18next";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { LanguageSwitcher, Loader } from "../tools";
+import { useEffect, Suspense } from "react";
+import { LanguageSwitcher, Loader } from "../../components";
 import { Desk } from "../../models";
 
 const HeroSection = () => {
@@ -15,25 +15,31 @@ const HeroSection = () => {
             screenScale = [0.5, 0.5, 0.5];
             screenPosition = [0, -6.5, -43.4];
         } else {
-            screenScale = [0.011, 0.011, 0.011];
-            screenPosition = [0, -2.5, 0];
+            screenScale = [1, 1, 1];
+            screenPosition = [1.5, -2.5, 0];
         }
 
         return [screenScale, screenPosition];
     };
 
     const [deskScale, deskPosition] = adjustDeskForScreenSize();
+    useEffect(() => {
+        document.body.classList.add('fade-in');
+    }, []);
 
     return (
         <>
-            <div className='flex flex-col w-10/12 h-5/6 absolute z-10'>
-                <nav className='flex justify-end'>
+            <div className='flex flex-col w-9/12 h-5/6 absolute z-10'>
+                <nav className='flex justify-end items-center'>
                     <LanguageSwitcher/>
                 </nav>
-                <div className="flex flex-col relative top-4 md:top-20 items-center md:items-start">
+                <div className="flex flex-col relative top-10 md:top-40 items-center md:items-start">
                     <h1 className="-mb-4 md:-mb-6">{t('heroSection_title_1')}</h1>
                     <h1>{t('heroSection_title_2')}</h1>
-                    <h2>{t('heroSection_legend')}</h2>
+                    <div className="my-4">
+                        <h2>{t('heroSection_legend_1')}</h2>
+                        <h2>{t('heroSection_legend_2')}</h2>
+                    </div>
                 </div>
             </div>
             <Canvas
@@ -59,7 +65,7 @@ const HeroSection = () => {
                     <Desk
                         position={deskPosition}
                         scale={deskScale}
-                        rotation={[0, 4.1, -.1]}
+                        rotation={[0.15, 4.2, -.10]}
                     />
                 </Suspense>
             </Canvas>

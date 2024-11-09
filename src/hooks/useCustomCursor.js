@@ -17,6 +17,12 @@ const useCustomCursor = () => {
         const updateCursor = () => {
             cursorX += (mouseX - cursorX) * 0.25;
             cursorY += (mouseY - cursorY) * 0.25;
+
+            const maxX = window.innerWidth - cursor.offsetWidth;
+            const maxY = window.innerHeight - cursor.offsetHeight;
+            cursorX = Math.max(0, Math.min(cursorX, maxX));
+            cursorY = Math.max(0, Math.min(cursorY, maxY));
+
             cursor.style.left = `${cursorX}px`;
             cursor.style.top = `${cursorY}px`;
             requestAnimationFrame(updateCursor);

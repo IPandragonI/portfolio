@@ -4,5 +4,7 @@ import ProjectsSection from "./section/ProjectsSection.jsx";
 import ContactSection from "./section/ContactSection.jsx";
 import SectionIndicator from "./tools/SectionIndicator.jsx";
 import LanguageSwitcher from "./tools/LanguageSwitcher.jsx";
+import Loader from "./tools/Loader.jsx";
+import ScrollMouse from "./tools/ScrollMouse.jsx";
 
-export {HeroSection, SkillsSection, ProjectsSection, ContactSection, SectionIndicator, LanguageSwitcher};
+export {HeroSection, SkillsSection, ProjectsSection, ContactSection, SectionIndicator, LanguageSwitcher, ScrollMouse, Loader};
