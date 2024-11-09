@@ -1,9 +1,8 @@
-
 import { useTranslation } from "react-i18next";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, Suspense } from "react";
+import {Suspense, useEffect} from "react";
 import { LanguageSwitcher, Loader } from "../../components";
-import { Desk } from "../../models";
+import { UpcycledTerrarium } from "../../models";
 
 const HeroSection = () => {
     const { t } = useTranslation();
@@ -15,8 +14,8 @@ const HeroSection = () => {
             screenScale = [0.5, 0.5, 0.5];
             screenPosition = [0, -6.5, -43.4];
         } else {
-            screenScale = [1, 1, 1];
-            screenPosition = [1.5, -2.5, 0];
+            screenScale = [1.5, 1.5, 1.5];
+            screenPosition = [2, -1.7, 0];
         }
 
         return [screenScale, screenPosition];
@@ -29,7 +28,7 @@ const HeroSection = () => {
 
     return (
         <>
-            <div className='flex flex-col w-9/12 h-5/6 absolute z-10'>
+            <div className='flex flex-col w-10/12 h-5/6 absolute z-10'>
                 <nav className='flex justify-end items-center'>
                     <LanguageSwitcher/>
                 </nav>
@@ -62,15 +61,14 @@ const HeroSection = () => {
                         intensity={1}
                     />
 
-                    <Desk
+                    <UpcycledTerrarium
                         position={deskPosition}
                         scale={deskScale}
-                        rotation={[0.15, 4.2, -.10]}
+                        rotation={[0.08, -.6, 0]}
                     />
                 </Suspense>
             </Canvas>
         </>
-
     );
 }
 

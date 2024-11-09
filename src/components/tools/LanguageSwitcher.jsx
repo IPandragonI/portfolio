@@ -1,8 +1,8 @@
-import {useEffect} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const LanguageSwitcher = () => {
-    const {i18n} = useTranslation();
+    const { i18n } = useTranslation();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng).then(r => null);
@@ -31,21 +31,20 @@ const LanguageSwitcher = () => {
             });
 
             return () => {
-                toggleSwitch.removeEventListener('click', function () {
-                });
+                toggleSwitch.removeEventListener('click', function () {});
             };
         }
     }, []);
 
     return (
         <div className="flex">
-            <img src="src/assets/img/fr.png" alt="french flag" id="frFlag" className="w-8 h-6 mx-4 rounded-md transition ease-in delay-100"/>
+            <img src={`${process.env.PUBLIC_URL}/assets/img/fr.png`} alt="french flag" id="frFlag" className="w-8 h-6 mx-4 rounded-md transition ease-in delay-100"/>
             <div className="toggle-switch french" id="toggleSwitch">
                 <div className="switch"></div>
                 <div className="french"></div>
                 <div className="english"></div>
             </div>
-            <img src="src/assets/img/uk.png" alt="united kingdom flag" id="ukFlag" className="w-8 h-6 mx-4 rounded-md opacity-50 transition ease-in delay-100"/>
+            <img src={`${process.env.PUBLIC_URL}/assets/img/uk.png`} alt="united kingdom flag" id="ukFlag" className="w-8 h-6 mx-4 rounded-md opacity-50 transition ease-in delay-100"/>
         </div>
     );
 }

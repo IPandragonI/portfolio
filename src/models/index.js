@@ -1,1 +1,1 @@
-export { Desk } from "./Desk";
+export { UpcycledTerrarium } from "./upcycledTerrarium.jsx";

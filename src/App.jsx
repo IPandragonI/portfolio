@@ -16,7 +16,6 @@ function App() {
                 </section>
             ))}
             <SectionIndicator sections={sections}/>
-            <img src="src/assets/img/pill.png" alt="mouse" className="scroll-down"/>
             <ScrollMouse/>
         </div>
     );
