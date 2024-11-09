@@ -11,4 +11,7 @@
     .cursor {
         display: none;
     }
+    .mouse, .scrollOnMouse {
+        display: none;
+    }
 }

@@ -37,8 +37,8 @@ const HeroSection = () => {
                     <h1 className="-mb-4 md:-mb-6">{t('heroSection_title_1')}</h1>
                     <h1>{t('heroSection_title_2')}</h1>
                     <div className="my-4">
-                        <h2>{t('heroSection_legend_1')}</h2>
-                        <h2>{t('heroSection_legend_2')}</h2>
+                        <h2 className="text-center md:text-left">{t('heroSection_legend_1')}</h2>
+                        <h2 className="text-center md:text-left">{t('heroSection_legend_2')}</h2>
                     </div>
                 </div>
             </div>
