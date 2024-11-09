@@ -1,6 +1,6 @@
 import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./components/index.js";
 import useCustomCursor from "./hooks/useCustomCursor.js";
-import SectionIndicator from "./components/tools/SectionIndicator.jsx";
+import { SectionIndicator } from "./components/tools/index.js";
 
 function App() {
     useCustomCursor();
@@ -10,7 +10,7 @@ function App() {
     return (
         <div className='w-full h-screen relative sections'>
             {sections.map((Section, index) => (
-                <section key={index} className="section">
+                <section key={index} className={'section bg-section-color'}>
                     <div className="flex w-10/12 h-5/6">
                         {Section}
                     </div>

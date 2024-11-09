@@ -7,15 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#ff923e',
-        'secondary': '#f7f7f7',
+        'primary': '#031C3E',
+        'secondary': '#137D97',
         'tertiary': '#333',
-        'section-1': '#F2E5BF',
-        'section-2': '#257180',
-        'section-3': '#FD8B51',
-        'section-4': '#CB6040',
-        'title-h1' : '#07313a',
-        'title-h2' : '#777'
+        'section-color': '#f1e9d9',
+        'section-1': '#23627D',
+        'section-2': '#137D97',
+        'section-3': '#9DD9D2',
       },
     },
   },
