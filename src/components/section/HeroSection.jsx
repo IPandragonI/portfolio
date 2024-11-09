@@ -9,8 +9,14 @@ const HeroSection = () => {
 
     const adjustTerrariumForScreenSize = () => {
         let screenScale, screenPosition;
-        screenPosition = [2, -1.7, 0];
-        screenScale = [1.5, 1.5, 1.5];
+
+        if (window.innerWidth < 768) {
+            screenScale = [1.2, 1.2, 1.2];
+            screenPosition = [0, -1.7, 0];
+        } else {
+            screenScale = [1.5, 1.5, 1.5];
+            screenPosition = [2, -1.7, 0];
+        }
 
         return [screenScale, screenPosition];
     };
