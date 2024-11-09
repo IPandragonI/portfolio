@@ -26,7 +26,7 @@ const HeroSection = () => {
 
     return (
         <>
-            <div className='flex flex-col w-10/12 h-5/6 absolute'>
+            <div className='flex flex-col w-10/12 h-5/6 absolute z-10'>
                 <nav className='flex justify-end'>
                     <LanguageSwitcher/>
                 </nav>
