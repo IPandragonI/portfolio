@@ -7,21 +7,15 @@ import { UpcycledTerrarium } from "../../models";
 const HeroSection = () => {
     const { t } = useTranslation();
 
-    const adjustDeskForScreenSize = () => {
+    const adjustTerrariumForScreenSize = () => {
         let screenScale, screenPosition;
-
-        if (window.innerWidth < 768) {
-            screenScale = [0.5, 0.5, 0.5];
-            screenPosition = [0, -6.5, -43.4];
-        } else {
-            screenScale = [1.5, 1.5, 1.5];
-            screenPosition = [2, -1.7, 0];
-        }
+        screenPosition = [2, -1.7, 0];
+        screenScale = [1.5, 1.5, 1.5];
 
         return [screenScale, screenPosition];
     };
 
-    const [deskScale, deskPosition] = adjustDeskForScreenSize();
+    const [terrariumScale, terrariumPosition] = adjustTerrariumForScreenSize();
     useEffect(() => {
         document.body.classList.add('fade-in');
     }, []);
@@ -62,8 +56,8 @@ const HeroSection = () => {
                     />
 
                     <UpcycledTerrarium
-                        position={deskPosition}
-                        scale={deskScale}
+                        position={terrariumPosition}
+                        scale={terrariumScale}
                         rotation={[0.08, -.6, 0]}
                     />
                 </Suspense>
