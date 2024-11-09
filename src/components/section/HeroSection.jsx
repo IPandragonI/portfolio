@@ -28,12 +28,12 @@ const HeroSection = () => {
 
     return (
         <>
-            <div className='flex flex-col w-full md:px-0 h-full py-10 md:h-5/6 md:py-0 absolute z-10'>
-                <nav className='flex justify-between items-center mx-0 md:mx-40'>
+            <div className='flex flex-col md:px-0 h-full py-10 md:h-5/6 md:py-0 absolute z-10'>
+                <nav className='flex justify-between w-full items-center mx-0 md:mx-40'>
                     <img src="images/rubik.png" alt="cube" className="w-12 h-12 mx-4"/>
                     <LanguageSwitcher/>
                 </nav>
-                <div className="flex flex-col relative w-full mx-10 xl:mx-40 top-12 md:top-40 items-start">
+                <div className="flex flex-col relative mx-10 xl:mx-40 top-12 md:top-40 items-start">
                     <h1 className="-mb-4 md:-mb-6">{t('heroSection_title_1')}</h1>
                     <h1>{t('heroSection_title_2')}</h1>
                     <div className="my-4">
