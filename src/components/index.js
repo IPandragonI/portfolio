@@ -6,5 +6,6 @@ import SectionIndicator from "./tools/SectionIndicator.jsx";
 import LanguageSwitcher from "./tools/LanguageSwitcher.jsx";
 import Loader from "./tools/Loader.jsx";
 import ScrollMouse from "./tools/ScrollMouse.jsx";
+import Hamburger from "./tools/Hamburger.jsx";
 
-export {HeroSection, SkillsSection, ProjectsSection, ContactSection, SectionIndicator, LanguageSwitcher, ScrollMouse, Loader};
+export {HeroSection, SkillsSection, ProjectsSection, ContactSection, SectionIndicator, LanguageSwitcher, ScrollMouse, Loader, Hamburger};

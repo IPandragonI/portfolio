@@ -23,6 +23,32 @@
     animation: fadeIn 2s ease-in-out;
 }
 
+@keyframes smoothOpen {
+    from {
+        right: -24rem;
+    }
+    to {
+        right: 0;
+    }
+}
+
+.smoothOpen {
+    animation: smoothOpen 1s ease-in;
+}
+
+@keyframes smoothClose {
+    from {
+        right: 0;
+    }
+    to {
+        right: -24rem;
+    }
+}
+
+.smoothClose {
+    animation: smoothClose 1s ease-in;
+}
+
 :root {
     --cursor-color: #137D97;
     --title-color: #091434;
@@ -172,4 +198,54 @@ h2 {
 
 .toggle-switch.english .en {
     opacity: 1;
+}
+
+#hamburger {
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.hamburger .line{
+    width: 40px;
+    height: 5px;
+    background-color: #ecf0f1;
+    display: block;
+    margin: 8px auto;
+    -webkit-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.hamburger:hover{
+    cursor: pointer;
+}
+
+#hamburger.is-active{
+    -webkit-transform: translateX(5vw);
+    -ms-transform: translateX(5vw);
+    -o-transform: translateX(5vw);
+    transform: translateX(5vw);
+}
+
+#hamburger.is-active .line{
+    background-color: #091434;
+}
+
+#hamburger.is-active .line:nth-child(2){
+    opacity: 0;
+}
+
+#hamburger.is-active .line:nth-child(1){
+    -webkit-transform: translateY(13px) rotate(45deg);
+    -ms-transform: translateY(13px) rotate(45deg);
+    -o-transform: translateY(13px) rotate(45deg);
+    transform: translateY(13px) rotate(45deg);
+}
+
+#hamburger.is-active .line:nth-child(3){
+    -webkit-transform: translateY(-13px) rotate(-45deg);
+    -ms-transform: translateY(-13px) rotate(-45deg);
+    -o-transform: translateY(-13px) rotate(-45deg);
+    transform: translateY(-13px) rotate(-45deg);
 }
