@@ -14,4 +14,7 @@
     .mouse, .scrollOnMouse {
         display: none;
     }
+    .sections {
+        height: 90vh;
+    }
 }
