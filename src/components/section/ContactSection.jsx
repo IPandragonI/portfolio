@@ -4,7 +4,7 @@ const ContactSection = () => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const email = 'mathysf84pro@gmail.com';
     const instagramLink = 'https://www.instagram.com/mathys.frn/';
-    const cvLink = 'lien_vers_cv';
+    const cvLink = 'docs/Mathys_FARINEAU.pdf';
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(email).then(() => {
@@ -35,7 +35,7 @@ const ContactSection = () => {
                 </div>
                 <div className="flex items-end">
                     <h1 className="font-bold text-base lg:text-xl xl:text-3xl w-20 lg:w-32 xl:w-48">CV</h1>
-                    <a className="text-base lg:text-xl xl:text-3xl font-light link-underline" href={cvLink}>{cvLink}</a>
+                    <a className="text-base lg:text-xl xl:text-3xl font-light link-underline" href={cvLink} target="_blank">Mon CV</a>
                 </div>
             </div>
         </div>

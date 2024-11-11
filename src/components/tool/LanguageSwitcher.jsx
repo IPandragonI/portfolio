@@ -36,7 +36,7 @@ const LanguageSwitcher = () => {
     return (
         <div className="flex">
             <div className="toggle-switch french cursor-pointer" id="toggleSwitch">
-                <p id="languageText">FR</p>
+                <p id="languageText" className="text-xl hover:text-indicator-focus transition ease-in delay-50">FR</p>
             </div>
         </div>
     );

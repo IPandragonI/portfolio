@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Canvas } from "@react-three/fiber";
-import {Suspense, useEffect} from "react";
+import { Suspense, useEffect, useState } from "react";
 import { UpcycledTerrarium } from "../../models";
-import {Loader} from "../tool";
+import { Loader } from "../tool";
 
 const HeroSection = () => {
     const { t } = useTranslation();
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const adjustTerrariumForScreenSize = () => {
         let screenScale, screenPosition;
@@ -17,13 +18,28 @@ const HeroSection = () => {
             screenScale = [1.5, 1.5, 1.5];
             screenPosition = [2, -1.7, 0];
         }
-
+        screenPosition[0] += mousePosition.x / 50;
+        screenPosition[1] -= mousePosition.y / 50;
         return [screenScale, screenPosition];
     };
 
     const [terrariumScale, terrariumPosition] = adjustTerrariumForScreenSize();
+
     useEffect(() => {
         document.body.classList.add('fade-in');
+
+        const handleMouseMove = (event) => {
+            setMousePosition({
+                x: (event.clientX / window.innerWidth) * 2 - 1,
+                y: (event.clientY / window.innerHeight) * 2 - 1,
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
     }, []);
 
     return (
@@ -45,10 +61,10 @@ const HeroSection = () => {
                 className={`w-full h-screen bg-transparent`}
                 camera={{near: 0.1, far: 1000}}
             >
-                <Suspense fallback={<Loader/>}>
-                    <directionalLight position={[1, 1, 1]} intensity={2}/>
-                    <ambientLight intensity={0.5}/>
-                    <pointLight position={[10, 5, 10]} intensity={2}/>
+                <Suspense fallback={<Loader />}>
+                    <directionalLight position={[1, 1, 1]} intensity={2} />
+                    <ambientLight intensity={0.5} />
+                    <pointLight position={[10, 5, 10]} intensity={2} />
                     <spotLight
                         position={[0, 50, 10]}
                         angle={0.15}

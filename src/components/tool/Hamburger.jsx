@@ -5,6 +5,7 @@ const Hamburger = ({ sections }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
     const [isMovedRight, setIsMovedRight] = useState(false);
+    const [activeSection, setActiveSection] = useState(0);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -14,6 +15,23 @@ const Hamburger = ({ sections }) => {
     };
 
     useEffect(() => {
+        const sectionElements = document.querySelectorAll('.section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(sectionElements).indexOf(entry.target);
+                    setActiveSection(index);
+                }
+            });
+        };
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        sectionElements.forEach(section => observer.observe(section));
+
         const hamburger = document.getElementById('hamburger');
         const handleClick = () => {
             setIsInitialLoad(false);
@@ -30,6 +48,7 @@ const Hamburger = ({ sections }) => {
             if (hamburger) {
                 hamburger.removeEventListener('click', handleClick);
             }
+            sectionElements.forEach(section => observer.unobserve(section));
         };
     }, [isOpen]);
 
@@ -50,7 +69,8 @@ const Hamburger = ({ sections }) => {
                 <div className="w-10/12 h-5/6 flex flex-col justify-center">
                     {sections.map((section, index) => (
                         <div key={index} className="flex items-center h-20 cursor-pointer" onClick={() => scrollToSection(index)}>
-                            <p className="font-bold text-3xl">{section.name}</p>
+                            <div className={`${index === activeSection ? 'bg-indicator-focus w-4 h-4 rounded-full mr-4' : ''}`}></div>
+                            <p className="font-bold text-3xl hover:text-indicator-focus transition ease-in delay-50">{section.name}</p>
                         </div>
                     ))}
                 </div>
