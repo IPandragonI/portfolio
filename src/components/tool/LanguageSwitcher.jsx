@@ -10,8 +10,7 @@ const LanguageSwitcher = () => {
 
     useEffect(() => {
         const toggleSwitch = document.getElementById('toggleSwitch');
-        const frFlag = document.getElementById('frFlag');
-        const ukFlag = document.getElementById('ukFlag');
+        const languageText = document.getElementById('languageText');
 
         if (toggleSwitch) {
             toggleSwitch.addEventListener('click', function () {
@@ -19,14 +18,12 @@ const LanguageSwitcher = () => {
                     changeLanguage('en');
                     toggleSwitch.classList.remove('french');
                     toggleSwitch.classList.add('english');
-                    ukFlag.classList.remove('opacity-50');
-                    frFlag.classList.add('opacity-50');
+                    languageText.innerText = 'EN';
                 } else {
                     changeLanguage('fr');
                     toggleSwitch.classList.remove('english');
                     toggleSwitch.classList.add('french');
-                    frFlag.classList.remove('opacity-50');
-                    ukFlag.classList.add('opacity-50');
+                    languageText.innerText = 'FR';
                 }
             });
 
@@ -38,13 +35,9 @@ const LanguageSwitcher = () => {
 
     return (
         <div className="flex">
-            <img src="images/fr.png" alt="french flag" id="frFlag" className="w-8 h-6 mx-4 rounded-md transition ease-in delay-100"/>
-            <div className="toggle-switch french" id="toggleSwitch">
-                <div className="switch"></div>
-                <div className="french"></div>
-                <div className="english"></div>
+            <div className="toggle-switch french cursor-pointer" id="toggleSwitch">
+                <p id="languageText">FR</p>
             </div>
-            <img src="images/uk.png" alt="united kingdom flag" id="ukFlag" className="w-8 h-6 mx-4 rounded-md opacity-50 transition ease-in delay-100"/>
         </div>
     );
 }

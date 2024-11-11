@@ -34,7 +34,7 @@ function SectionIndicator({ sections }) {
             {sections.map((_, index) => (
                 <div
                     key={index}
-                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full ${index === activeSection ? 'bg-indicator-focus' : 'bg-gray-200'}`}
+                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full ${index === activeSection ? 'bg-indicator-focus' : 'bg-indicator'}`}
                 ></div>
             ))}
         </div>

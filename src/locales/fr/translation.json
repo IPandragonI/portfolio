@@ -1,4 +1,8 @@
 {
+  "heroSection_title": "Accueil",
+  "skillSection_title": "Compétences",
+  "projectSection_title": "Projets",
+  "contactSection_title": "Contact",
   "heroSection_title_1": "Enchanté, je",
   "heroSection_title_2": "m'appelle Mathys.",
   "heroSection_legend_1": "Je transforme des lignes de code en expériences web...",

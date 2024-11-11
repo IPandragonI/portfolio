@@ -9,6 +9,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: SpectralBridge;
+    src: url("src/assets/font/SpectralBridge/SpectralBridge_Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -33,7 +40,7 @@
 }
 
 .smoothOpen {
-    animation: smoothOpen 1s ease-in;
+    animation: smoothOpen .5s ease-in;
 }
 
 @keyframes smoothClose {
@@ -46,14 +53,16 @@
 }
 
 .smoothClose {
-    animation: smoothClose 1s ease-in;
+    animation: smoothClose .5s ease-in;
 }
 
 :root {
-    --cursor-color: #137D97;
-    --title-color: #091434;
+    --title-color: #ac4800;
     --secondary-title-color: #82858a;
+    --dark-color: #333;
+    --light-color: #f1c38d;
     font-family: Poppins, sans-serif;
+    color: var(--dark-color);
 }
 
 h1 {
@@ -65,6 +74,10 @@ h1 {
 h2 {
     font-size: 1.2rem;
     color: var(--secondary-title-color);
+}
+
+a{
+    color: var(--title-color);
 }
 
 .sections {
@@ -97,25 +110,33 @@ h2 {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: var(--cursor-color);
+    background-color: var(--dark-color);
     position: absolute;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.cursor.hover {
+    width: 35px;
+    height: 35px;
+    border: .4rem solid var(--title-color);
+    background-color: unset;
 }
 
 .mouse{
     width: 24px;
     height: 35px;
     border-radius: 50px;
-    border: .2rem solid #031C3E;
+    border: .2rem solid var(--dark-color);
     overflow: hidden;
 }
 
 .scrollOnMouse{
     width: 5px;
     height: 10px;
-    background-color: #031C3E;
+    background-color: var(--dark-color);
     border-radius: 50px;
     overflow: hidden;
     bottom: 30px;
@@ -131,90 +152,22 @@ h2 {
     }
 }
 
-/** LanguageSwitch */
-.toggle-switch {
-    position: relative;
-    width: 55px;
-    height: 25px;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    overflow: hidden;
-    transition: background-color .4s ease;
-}
-
-.toggle-switch .switch {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    width: 15px;
-    height: 15px;
-    background-color: #eeee;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: left .4s cubic-bezier(0.68, -0.55, 0.17, 1.55);
-}
-
-.toggle-switch.french .switch {
-    left: 10px;
-}
-
-.toggle-switch.english .switch {
-    left: 32px;;
-    background-color: #bad2ff;
-}
-
-.toggle-switch.french {
-    background-color: #137D97;
-}
-
-.toggle-switch.english {
-    background-color: #031C3E;
-}
-
-.fr {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    font-size: 40px;
-    opacity: 1;
-    transition: opacity 1s ease;
-}
-
-.en {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 40px;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.toggle-switch.english .fr {
-    opacity: 0;
-}
-
-.toggle-switch.english .en {
-    opacity: 1;
-}
-
 #hamburger {
-    -webkit-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .hamburger .line{
     width: 40px;
     height: 5px;
-    background-color: #ecf0f1;
+    background-color: var(--title-color);
     display: block;
+    border-radius: 5rem;
     margin: 8px auto;
-    -webkit-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .hamburger:hover{
@@ -229,7 +182,7 @@ h2 {
 }
 
 #hamburger.is-active .line{
-    background-color: #091434;
+    background-color: var(--dark-color);
 }
 
 #hamburger.is-active .line:nth-child(2){
@@ -248,4 +201,27 @@ h2 {
     -ms-transform: translateY(-13px) rotate(-45deg);
     -o-transform: translateY(-13px) rotate(-45deg);
     transform: translateY(-13px) rotate(-45deg);
+}
+
+.link-underline {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--title-color);
+    transition: width 0.4s ease, right 0.4s ease;
+}
+
+.link-underline:hover::after {
+    width: 100%;
+    right: 0;
 }
