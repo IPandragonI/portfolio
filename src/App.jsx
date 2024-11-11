@@ -1,4 +1,5 @@
-import { ContactSection, HeroSection, ProjectsSection, SkillsSection, SectionIndicator, ScrollMouse } from "./components/";
+import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./components/section";
+import { SectionIndicator, ScrollMouse } from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
 
 function App() {

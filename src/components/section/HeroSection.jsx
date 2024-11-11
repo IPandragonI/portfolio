@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Canvas } from "@react-three/fiber";
 import {Suspense, useEffect} from "react";
-import {Hamburger, Loader} from "../../components";
+import {Hamburger, Loader} from "../tool";
 import { UpcycledTerrarium } from "../../models";
 
 const HeroSection = () => {

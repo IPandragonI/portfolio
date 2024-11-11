@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {LanguageSwitcher} from "../index.js";
+import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
 const Hamburger = () => {
     const [isOpen, setIsOpen] = useState(false);
