@@ -11,7 +11,7 @@ const SkillsSection = () => {
             </div>
             <div className="h-3/4 md:w-3/4 md:h-full grid grid-cols-1 gap-4 p-4">
                 <div className="p-10 h-full w-full">
-                    <h1 className="text-2xl">Mathys Farineau</h1>
+                    <h1 className="text-3xl">Mes technologies</h1>
                 </div>
                 <div className="h-full w-full flex flex-col justify-between p-10">
                     <div className="grid grid-cols-3 items-center gap-4">

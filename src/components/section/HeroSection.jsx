@@ -45,8 +45,10 @@ const HeroSection = () => {
     return (
         <>
             <div className='flex flex-col md:px-0 h-full md:w-10/12 py-10 md:h-5/6 md:py-0 absolute z-10'>
-                <nav className='flex justify-between w-full items-center'>
-                    <img src="images/rubik.png" alt="cube" className="w-12 h-12 mx-4"/>
+                <nav className='flex justify-between w-full items-center h-12'>
+                    <div className="border border-indicator-focus rounded-3xl px-3 py-1">
+                        <p className="text-sm text-indicator-focus">Mathys Farineau</p>
+                    </div>
                 </nav>
                 <div className="flex flex-col relative mx-10 xl:mx-0 top-12 md:top-40 items-start">
                     <h1 className="-mb-4 md:-mb-6">{t('heroSection_title_1')}</h1>

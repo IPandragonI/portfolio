@@ -107,10 +107,10 @@ a{
 }
 
 .cursor {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background-color: var(--dark-color);
+    border: 2px solid var(--title-color);
     position: absolute;
     pointer-events: none;
     transform: translate(-50%, -50%);
