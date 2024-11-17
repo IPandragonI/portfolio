@@ -2,9 +2,9 @@ import { useTranslation } from "react-i18next";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { UpcycledTerrarium } from "../../models";
-import { Loader } from "../tool";
+import {LanguageSwitcher, Loader} from "../tool";
 
-const HeroSection = () => {
+const HeroSection = ({ onCanvasLoaded }) => {
     const { t } = useTranslation();
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -26,8 +26,6 @@ const HeroSection = () => {
     const [terrariumScale, terrariumPosition] = adjustTerrariumForScreenSize();
 
     useEffect(() => {
-        document.body.classList.add('fade-in');
-
         const handleMouseMove = (event) => {
             setMousePosition({
                 x: (event.clientX / window.innerWidth) * 2 - 1,
@@ -48,6 +46,9 @@ const HeroSection = () => {
                 <nav className='flex justify-between w-full items-center h-12'>
                     <div className="border border-indicator-focus rounded-3xl px-3 py-1">
                         <p className="text-sm text-indicator-focus">Mathys Farineau</p>
+                    </div>
+                    <div className="mr-20">
+                        <LanguageSwitcher />
                     </div>
                 </nav>
                 <div className="flex flex-col relative mx-10 xl:mx-0 top-12 md:top-40 items-start">

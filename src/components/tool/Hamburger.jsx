@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
 const Hamburger = ({ sections }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +64,6 @@ const Hamburger = ({ sections }) => {
     return (
         <div className="hamburger-container fixed z-50 top-20 right-[8%]">
             <div className={`panel fixed flex flex-col justify-between top-0 ${isOpen ? 'right-0 smoothOpen' : (isInitialLoad ? '-right-96' : 'smoothClose -right-96')} w-96 bg-gray-50 h-full shadow-lg py-24 px-10`}>
-                <LanguageSwitcher />
                 <div className="w-10/12 h-5/6 flex flex-col justify-center">
                     {sections.map((section, index) => (
                         <div key={index} className="flex items-center h-20 cursor-pointer" onClick={() => scrollToSection(index)}>
@@ -80,9 +78,9 @@ const Hamburger = ({ sections }) => {
                 </div>
             </div>
             <div className="hamburger mx-4" id="hamburger">
-                <span className="line"></span>
-                <span className="line"></span>
-                <span className="line"></span>
+                {[...Array(9)].map((_, index) => (
+                    <span key={index} className="circle"></span>
+                ))}
             </div>
         </div>
     );

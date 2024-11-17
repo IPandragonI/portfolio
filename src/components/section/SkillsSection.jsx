@@ -11,16 +11,14 @@ const SkillsSection = () => {
             </div>
             <div className="h-3/4 md:w-3/4 md:h-full grid grid-cols-1 gap-4 p-4">
                 <div className="p-10 h-full w-full">
-                    <h1 className="text-3xl">Mes technologies</h1>
+                    <h1>Mes technologies</h1>
                 </div>
                 <div className="h-full w-full flex flex-col justify-between p-10">
-                    <div className="grid grid-cols-3 items-center gap-4">
-                        <SkillCard imageSrc="images/javascript.png" title="Javascript" text="Dynamic Interactions" />
-                        <SkillCard imageSrc="images/php.png" title="PHP" text="Server-Side Scripting" />
-                        <SkillCard imageSrc="images/css.png" title="CSS" text="Styling & Layout" />
-                        <SkillCard imageSrc="images/java.png" title="Java" text="Enterprise Solutions" />
-                        <SkillCard imageSrc="images/python.png" title="Python" text="Versatile Scripting" />
-                        <SkillCard imageSrc="images/dart.png" title="Dart" text="Cross-Platform Mobile" />
+                    <div className="grid grid-cols-4 items-center gap-4">
+                        <SkillCard imageSrc="images/javascript.png" title="Javascript" text="Dynamic Interactions"/>
+                        <SkillCard imageSrc="images/php.png" title="PHP" text="Server-Side Scripting"/>
+                        <SkillCard imageSrc="images/java.png" title="Java" text="Enterprise Solutions"/>
+                        <SkillCard imageSrc="images/dart.png" title="Dart" text="Cross-Platform Mobile"/>
                     </div>
                     <hr className="w-10/12 h-px my-0 mx-auto bg-gray-200 border-0"/>
                     <div className="grid grid-cols-3 items-center gap-4">
@@ -31,10 +29,9 @@ const SkillsSection = () => {
                         <SkillCard imageSrc="images/tailwindcss.png" title="TailwindCSS" text="Utility-First CSS"/>
                         <SkillCard imageSrc="images/wordpress.png" title="Wordpress" text="Popular CMS"/>
                     </div>
-                </div>
-                <div className="w-full flex flex-col justify-center">
-                    <div className="grid grid-cols-2 items-center justify-items-center gap-4 p-4">
-                        <SkillCard imageSrc="images/figma.png" single={true} />
+                    <hr className="w-10/12 h-px my-0 mx-auto bg-gray-200 border-0"/>
+                    <div className="grid grid-cols-4 items-center justify-items-center gap-4 p-4">
+                        <SkillCard imageSrc="images/figma.png" single={true}/>
                         <SkillCard imageSrc="images/docker.png" single={true}/>
                         <SkillCard imageSrc="images/db.png" single={true}/>
                         <SkillCard imageSrc="images/git.png" single={true}/>
