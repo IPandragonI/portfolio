@@ -67,13 +67,13 @@ const Hamburger = ({ sections }) => {
                 <div className="w-10/12 h-5/6 flex flex-col justify-center">
                     {sections.map((section, index) => (
                         <div key={index} className="flex items-center h-20 cursor-pointer" onClick={() => scrollToSection(index)}>
-                            <div className={`${index === activeSection ? 'bg-indicator-focus w-4 h-4 rounded-full mr-4' : ''}`}></div>
-                            <p className="font-bold text-3xl hover:text-indicator-focus transition ease-in delay-50">{section.name}</p>
+                            <div className={`${index === activeSection ? 'bg-primary w-4 h-4 rounded-full mr-4' : ''}`}></div>
+                            <p className="font-bold text-3xl hover:text-primary transition ease-in delay-50">{section.name}</p>
                         </div>
                     ))}
                 </div>
                 <div className="h-20">
-                    <hr className="w-3/4 h-[2px] my-4 bg-indicator-focus border-0"/>
+                    <hr className="w-3/4 h-[2px] my-4 bg-primary border-0"/>
                     <p>Mathys Farineau - 2024</p>
                 </div>
             </div>

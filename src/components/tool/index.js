@@ -3,6 +3,6 @@ import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import Loader from "./Loader.jsx";
 import ScrollMouse from "./ScrollMouse.jsx";
 import Hamburger from "./Hamburger.jsx";
-import SkillCard from "./SkillCard.jsx";
+import SkillPlanet from "./SkillPlanet.jsx";
 
-export {SectionIndicator, LanguageSwitcher, Loader, ScrollMouse, Hamburger, SkillCard};
+export {SectionIndicator, LanguageSwitcher, Loader, ScrollMouse, Hamburger, SkillPlanet};

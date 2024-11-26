@@ -4,14 +4,14 @@
 
 @font-face {
     font-family: "Poppins";
-    src: url("src/assets/font/Poppins/Poppins-Regular.ttf") format("truetype");
+    src: url("../public/font/Poppins/Poppins-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Poppins";
-    src: url("src/assets/font/Poppins/Poppins-Black.ttf") format("truetype");
+    src: url("../public/font/Poppins/Poppins-Black.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
@@ -72,12 +72,16 @@ h1 {
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--secondary-title-color);
 }
 
 a{
     color: var(--title-color);
+}
+
+body{
+    overflow: hidden;
 }
 
 .sections {

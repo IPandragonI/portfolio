@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'indicator-focus': '#6D8FFF',
+        'primary': '#6D8FFF',
+        'primary-hover': '#afc5ff',
+        'secondary': '#E284EB',
         'section-color': '#FAF7F5',
       },
     },
