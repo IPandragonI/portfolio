@@ -31,23 +31,11 @@ const useCustomCursor = () => {
         const addEventListeners = () => {
             window.addEventListener('mousemove', moveCursor);
             requestAnimationFrame(updateCursor);
-
-            const toggleSwitch = document.getElementById('toggleSwitch');
-            if (toggleSwitch) {
-                toggleSwitch.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                toggleSwitch.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            }
         };
 
         const removeEventListeners = () => {
             window.removeEventListener('mousemove', moveCursor);
             document.body.removeChild(cursor);
-
-            const toggleSwitch = document.getElementById('toggleSwitch');
-            if (toggleSwitch) {
-                toggleSwitch.removeEventListener('mouseenter', () => cursor.classList.add('hover'));
-                toggleSwitch.removeEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            }
         };
 
         addEventListeners();

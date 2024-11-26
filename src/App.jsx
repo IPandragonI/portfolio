@@ -1,5 +1,5 @@
 import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./components/section";
-import {SectionIndicator, ScrollMouse, Hamburger} from "./components/tool";
+import {SectionIndicator, ScrollMouse} from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
 import {useTranslation} from "react-i18next";
 
@@ -7,9 +7,10 @@ import {useTranslation} from "react-i18next";
 function App() {
     useCustomCursor();
     const { t } = useTranslation();
+    const sectionsName = [t('heroSection_title'), t('skillSection_title'), t('projectSection_title'), t('contactSection_title')];
     const sections = [
-        { name: t('heroSection_title'), component: <HeroSection /> },
-        { name: t('skillSection_title'), component: <SkillsSection /> },
+        { name: t('heroSection_title'), component: <HeroSection sections={sectionsName}/> },
+        { name: t('skillSection_title'), component: <SkillsSection/> },
         { name: t('projectSection_title'), component: <ProjectsSection /> },
         { name: t('contactSection_title'), component: <ContactSection /> }
     ];
@@ -25,7 +26,6 @@ function App() {
             ))}
             <SectionIndicator sections={sections.map(section => section.component)} />
             <ScrollMouse />
-            <Hamburger sections={sections} />
         </div>
     );
 }

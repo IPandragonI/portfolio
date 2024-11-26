@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import {useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 
 const LanguageSwitcher = () => {
-    const { i18n } = useTranslation();
+    const {i18n} = useTranslation();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng).then(r => null);
@@ -28,16 +28,15 @@ const LanguageSwitcher = () => {
             });
 
             return () => {
-                toggleSwitch.removeEventListener('click', function () {});
+                toggleSwitch.removeEventListener('click', function () {
+                });
             };
         }
     }, []);
 
     return (
-        <div className="flex">
-            <div className="toggle-switch french cursor-pointer" id="toggleSwitch">
-                <p id="languageText" className="text-lg text-primary hover:text-slate-800 transition ease-in delay-50">FR</p>
-            </div>
+        <div className="toggle-switch french cursor-pointer my-auto" id="toggleSwitch">
+            <p id="languageText" className="text-lg text-primary hover:text-slate-800 transition ease-in delay-50">FR</p>
         </div>
     );
 }

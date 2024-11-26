@@ -4,7 +4,6 @@ const Hamburger = ({ sections }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
     const [isMovedRight, setIsMovedRight] = useState(false);
-    const [activeSection, setActiveSection] = useState(0);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -15,21 +14,6 @@ const Hamburger = ({ sections }) => {
 
     useEffect(() => {
         const sectionElements = document.querySelectorAll('.section');
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
-        };
-        const observerCallback = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const index = Array.from(sectionElements).indexOf(entry.target);
-                    setActiveSection(index);
-                }
-            });
-        };
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sectionElements.forEach(section => observer.observe(section));
 
         const hamburger = document.getElementById('hamburger');
         const handleClick = () => {
@@ -47,7 +31,6 @@ const Hamburger = ({ sections }) => {
             if (hamburger) {
                 hamburger.removeEventListener('click', handleClick);
             }
-            sectionElements.forEach(section => observer.unobserve(section));
         };
     }, [isOpen]);
 
@@ -62,19 +45,18 @@ const Hamburger = ({ sections }) => {
     };
 
     return (
-        <div className="hamburger-container fixed z-50 top-20 right-[8%]">
-            <div className={`panel fixed flex flex-col justify-between top-0 ${isOpen ? 'right-0 smoothOpen' : (isInitialLoad ? '-right-96' : 'smoothClose -right-96')} w-96 bg-gray-50 h-full shadow-lg py-24 px-10`}>
+        <div className="hamburger-container z-50">
+            <div className={`panel fixed flex flex-col justify-between top-0 ${isOpen ? 'right-0 smoothOpen' : (isInitialLoad ? '-right-96' : 'smoothClose -right-96')} w-96 bg-gray-50 h-full shadow-lg py-24 px-4`}>
                 <div className="w-10/12 h-5/6 flex flex-col justify-center">
                     {sections.map((section, index) => (
                         <div key={index} className="flex items-center h-20 cursor-pointer" onClick={() => scrollToSection(index)}>
-                            <div className={`${index === activeSection ? 'bg-primary w-4 h-4 rounded-full mr-4' : ''}`}></div>
-                            <p className="font-bold text-3xl hover:text-primary transition ease-in delay-50">{section.name}</p>
+                            <p className="font-bold text-3xl hover:text-primary transition ease-in delay-50">{section}</p>
                         </div>
                     ))}
                 </div>
                 <div className="h-20">
                     <hr className="w-3/4 h-[2px] my-4 bg-primary border-0"/>
-                    <p>Mathys Farineau - 2024</p>
+                    <p className='text-lg'>Mathys Farineau - 2024</p>
                 </div>
             </div>
             <div className="hamburger mx-4" id="hamburger">
