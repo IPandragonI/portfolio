@@ -11,7 +11,9 @@ const SolarSystem = ({article, icons}) => {
         const camera = new THREE.PerspectiveCamera(70, 1.5, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({alpha: true});
         renderer.setSize(1000, 650);
-        if(window.innerWidth < 768) renderer.setSize(350, 300);
+        if(window.innerWidth < 768) {
+            renderer.setSize(350, 250)
+        }
         mount.appendChild(renderer.domElement);
 
         const sunGeometry = new THREE.SphereGeometry(1, 128, 128);
@@ -30,6 +32,7 @@ const SolarSystem = ({article, icons}) => {
         });
 
         camera.position.set(-4.8, 1.5, 2.7);
+
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
 

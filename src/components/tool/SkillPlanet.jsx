@@ -6,16 +6,16 @@ const SkillPlanet = ({article}) => {
         {
             name: 'FRONT-END', icons: [
                 {src: 'images/javascript.png', title: 'JavaScript'},
-                {src: 'images/extjs.png', title: 'ExtJs'},
                 {src: 'images/tailwindcss.png', title: 'Tailwind'},
+                {src: 'images/extjs.png', title: 'ExtJs'},
                 {src: 'images/react.png', title: 'React'}
             ]
         },
         {
             name: 'BACK-END', icons: [
                 {src: 'images/java.png', title: 'Java'},
-                {src: 'images/spring.png', title: 'Spring'},
                 {src: 'images/php.png', title: 'PHP'},
+                {src: 'images/spring.png', title: 'Spring'},
                 {src: 'images/symfony.png', title: 'Symfony'}
             ]
         },
@@ -24,7 +24,8 @@ const SkillPlanet = ({article}) => {
                 {src: 'images/git.png', title: 'Git'},
                 {src: 'images/docker.png', title: 'Docker'},
                 {src: 'images/dart.png', title: 'Dart'},
-                {src: 'images/figma.png', title: 'Figma'}
+                {src: 'images/figma.png', title: 'Figma'},
+                {src: 'images/db.png', title: 'Database'},
             ]
         }
     ];
