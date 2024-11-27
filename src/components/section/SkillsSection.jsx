@@ -20,7 +20,7 @@ const SkillsSection = () => {
                         <div
                             key={index}
                             onClick={() => setActive(index)}
-                            className={`text-sm md:text-xl lg:text-4xl w-1/4 md:w-auto h-16 md:h-[unset] py-4 px-2 text-center font-bold md:py-8 md:px-2 ${index === active ? 'bg-secondary' : 'bg-primary hover:bg-primary-hover'} text-white rounded-2xl transition ease-in delay-50`}
+                            className={`text-sm md:text-xl lg:text-4xl w-1/4 md:w-auto h-16 md:h-[unset] py-4 px-2 text-center font-bold md:py-8 md:px-2 ${index === active ? 'bg-secondary' : 'bg-primary hover:bg-primary-hover'} text-white rounded-3xl transition ease-in delay-50`}
                         >
                             {section.name}
                         </div>
