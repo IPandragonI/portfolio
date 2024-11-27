@@ -66,6 +66,14 @@
     }
 }
 
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
 
 /********** Generic style **********/
 
@@ -73,6 +81,8 @@
     --title-color: #6D8FFF;
     --secondary-title-color: #291334;
     --dark-color: #333;
+    --section-color: #FAF7F5;
+    --section-secondary-color: #f6e0f6;
     font-family: Poppins, sans-serif;
     color: var(--dark-color);
 }
@@ -92,7 +102,7 @@ a{
     color: var(--title-color);
 }
 
-body{
+body {
     overflow: hidden;
 }
 
@@ -105,7 +115,7 @@ body{
     height: 100vh;
     -ms-overflow-style: none;
     scrollbar-width: none;
-
+    background-color: var(--section-color);
     .section {
         scroll-snap-align: start;
         height: 100vh;

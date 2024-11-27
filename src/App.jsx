@@ -18,7 +18,7 @@ function App() {
     return (
         <div className='relative sections'>
             {sections.map((section, index) => (
-                <section key={index} className={'section bg-section-color'}>
+                <section key={index} className={'section'}>
                     <div className="flex w-screen h-full items-center justify-center">
                         {section.component}
                     </div>

@@ -5,6 +5,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
 THREE.Cache.enabled = true;
+const orbitRadius = window.innerWidth < 768 ? 2 : 2.5;
 
 const SolarSystem = ({ article, icons }) => {
     const mountRef = useRef(null);
@@ -38,10 +39,10 @@ const SolarSystem = ({ article, icons }) => {
 };
 
 const setRendererSize = (renderer) => {
-    if (window.innerWidth < 1024) {
-        renderer.setSize(600, 400);
-    } else if (window.innerWidth < 768) {
+    if (window.innerWidth < 768) {
         renderer.setSize(350, 250);
+    }else if (window.innerWidth < 1024) {
+        renderer.setSize(600, 400);
     } else {
         renderer.setSize(1000, 650);
     }
@@ -67,7 +68,6 @@ const createSun = (scene) => {
 };
 
 const createPlanets = (sun, icons) => {
-    const orbitRadius = 2.5;
     return icons.map((icon, index) => {
         const texture = new THREE.TextureLoader().load(icon.src);
         const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
@@ -80,7 +80,6 @@ const createPlanets = (sun, icons) => {
 };
 
 const createOrbit = (scene) => {
-    const orbitRadius = 2.5;
     const orbitGeometry = new THREE.RingGeometry(orbitRadius - 0.04, orbitRadius + 0.04, 128);
     const orbitMaterial = new THREE.MeshBasicMaterial({ color: 0x6D8FFF, side: THREE.DoubleSide });
     const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
@@ -95,7 +94,7 @@ const addText = (scene, article) => {
     fontLoader.load('font/helvetiker_bold.typeface.json', (font) => {
         const textGeometry = new TextGeometry(article, {
             font: font,
-            size: 0.5,
+            size: window.innerWidth < 768 ? .8 : 0.5,
             height: 0.2,
             curveSegments: 64,
         });
