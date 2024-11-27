@@ -1,1 +1,0 @@
-export { UpcycledTerrarium } from "./upcycledTerrarium.jsx";

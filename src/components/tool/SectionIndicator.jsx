@@ -34,7 +34,7 @@ function SectionIndicator({ sections }) {
             {sections.map((_, index) => (
                 <div
                     key={index}
-                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full ${index === activeSection ? 'bg-primary' : 'border border-primary'}`}
+                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full ${index === activeSection ? 'bg-primary' : 'border-2 border-primary'}`}
                 ></div>
             ))}
         </div>

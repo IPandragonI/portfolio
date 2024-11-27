@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 const useCustomCursor = () => {
     useEffect(() => {
@@ -28,13 +28,29 @@ const useCustomCursor = () => {
             requestAnimationFrame(updateCursor);
         };
 
+        const handleMouseOver = (e) => {
+            if (e.target.classList.contains('cursor-hover')) {
+                cursor.classList.add('hover');
+            }
+        };
+
+        const handleMouseOut = (e) => {
+            if (e.target.classList.contains('cursor-hover')) {
+                cursor.classList.remove('hover');
+            }
+        };
+
         const addEventListeners = () => {
             window.addEventListener('mousemove', moveCursor);
+            window.addEventListener('mouseover', handleMouseOver);
+            window.addEventListener('mouseout', handleMouseOut);
             requestAnimationFrame(updateCursor);
         };
 
         const removeEventListeners = () => {
             window.removeEventListener('mousemove', moveCursor);
+            window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('mouseout', handleMouseOut);
             document.body.removeChild(cursor);
         };
 

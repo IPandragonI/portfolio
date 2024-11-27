@@ -35,8 +35,8 @@ const LanguageSwitcher = () => {
     }, []);
 
     return (
-        <div className="toggle-switch french cursor-pointer my-auto" id="toggleSwitch">
-            <p id="languageText" className="text-lg text-primary hover:text-slate-800 transition ease-in delay-50">FR</p>
+        <div className="toggle-switch french cursor-pointer my-auto ml-4 md:ml-8" id="toggleSwitch">
+            <p id="languageText" className="text-lg text-primary hover:text-secondary transition ease-in delay-50 cursor-hover">FR</p>
         </div>
     );
 }

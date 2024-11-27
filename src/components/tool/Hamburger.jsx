@@ -59,9 +59,9 @@ const Hamburger = ({ sections }) => {
                     <p className='text-lg'>Mathys Farineau - 2024</p>
                 </div>
             </div>
-            <div className="hamburger mx-4" id="hamburger">
+            <div className="hamburger ml-4 md:ml-8 cursor-hover" id="hamburger">
                 {[...Array(9)].map((_, index) => (
-                    <span key={index} className="circle"></span>
+                    <span key={index} className="circle cursor-hover"></span>
                 ))}
             </div>
         </div>

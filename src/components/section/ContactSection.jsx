@@ -16,7 +16,7 @@ const ContactSection = () => {
     return (
         <div className="flex flex-col w-9/12 py-10 h-3/6 md:py-0 absolute z-10">
             <h1>CONTACT</h1>
-            <hr className="h-[2px] my-4 bg-neutral-800 border-0"/>
+            <hr className="h-[2px] my-4 rounded-3xl bg-primary border-0"/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <ContactItem title="RÉSEAUX" content="mathys.frn" link={instagramLink} />
                 <ContactItem title="EMAIL" content={email} onClick={copyToClipboard} />
@@ -31,9 +31,9 @@ const ContactItem = ({ title, content, onClick, link }) => (
     <div className="flex items-end">
         <h1 className="font-bold text-base lg:text-xl xl:text-3xl w-20 lg:w-32 xl:w-48">{title}</h1>
         {link ? (
-            <a className="text-sm lg:text-xl xl:text-3xl font-light link-underline" href={link} target="_blank" rel="noopener noreferrer">{content}</a>
+            <a className="text-sm lg:text-xl xl:text-3xl font-light link-underline cursor-hover" href={link} target="_blank" rel="noopener noreferrer">{content}</a>
         ) : (
-            <a href="#" className="text-sm lg:text-xl xl:text-3xl font-light link-underline" onClick={onClick}>{content}</a>
+            <a href="#" className="text-sm lg:text-xl xl:text-3xl font-light link-underline cursor-hover" onClick={onClick}>{content}</a>
         )}
     </div>
 );
