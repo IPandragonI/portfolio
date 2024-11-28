@@ -3,7 +3,14 @@
   "skillSection_title": "Mes technologies",
   "projectSection_title": "Mes projets",
   "contactSection_title": "Contact",
+
   "heroSection_title_1": "Enchanté, je m'appelle Mathys.",
   "heroSection_legend_1": "Je transforme des lignes de code en expériences web...",
-  "heroSection_legend_2": "...et débug mes erreurs tard le soir"
+  "heroSection_legend_2": "...et débug mes erreurs tard le soir",
+
+  "skillSection_tools": "OUTILS",
+
+  "projectSection_project_1_desc": "Application Symfony",
+  "projectSection_project_2_desc": "Application Mobile",
+  "projectSection_project_3_desc": "UX/UI Frontend"
 }

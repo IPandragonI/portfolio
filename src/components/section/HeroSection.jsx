@@ -1,18 +1,8 @@
 import { useTranslation } from "react-i18next";
-import {Hamburger, LanguageSwitcher} from "../tool";
+import {DarkModeSwitcher, Hamburger, LanguageSwitcher} from "../tool";
 
-const HeroSection = ({sections}) => {
+const HeroSection = ({ sections }) => {
     const { t } = useTranslation();
-
-    const toggleDarkMode = () => {
-        const html = document.querySelector('html');
-        html.classList.toggle('dark');
-        if (html.classList.contains('dark')) {
-            localStorage.setItem('dark-mode', 'true');
-        } else {
-            localStorage.setItem('dark-mode', 'false');
-        }
-    }
 
     return (
         <>
@@ -21,8 +11,8 @@ const HeroSection = ({sections}) => {
                     <div className="border border-primary rounded-3xl px-3 py-1">
                         <p className="text-sm text-primary">Full-Stack developper</p>
                     </div>
-                    <div className='flex'>
-                        <input type="checkbox" onClick={toggleDarkMode}/>
+                    <div className='flex items-center'>
+                        <DarkModeSwitcher />
                         <LanguageSwitcher />
                         <Hamburger sections={sections} />
                     </div>
@@ -37,6 +27,6 @@ const HeroSection = ({sections}) => {
             </div>
         </>
     );
-}
+};
 
 export default HeroSection;

@@ -18,15 +18,155 @@
     font-style: normal;
 }
 
+/********** Generic style **********/
+
+html {
+    --color-primary: #6D8FFF;
+    --color-primary-hover: #aFC5FF;
+    --color-secondary: #E284EB;
+    --color-tertiary: #291334;
+    --color-section: #FAF7F5;
+    --text-color: #333;
+}
+
+html.dark {
+    --color-primary: #4263d3;
+    --color-primary-hover: #6b8fec;
+    --color-secondary: #9333EA;
+    --color-tertiary: #DDD;
+    --color-section: #1F2937;
+    --text-color: #BFC5DE;
+}
+
+body {
+    overflow: hidden;
+    font-family: Poppins, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.sections::-webkit-scrollbar {
+    display: none;
+}
+
+
+/********** Cursor **********/
+
+.cursor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.cursor.hover {
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primary);
+    opacity: .4;
+}
+
+
+/********** Components **********/
+
+.scrollOnMouse {
+    animation: scrollAnimation 3s infinite cubic-bezier(0.68, -0.55, 0.17, 1.55);
+}
+
+.hamburger:hover .circle:nth-child(1),
+.hamburger:hover .circle:nth-child(3),
+.hamburger:hover .circle:nth-child(5),
+.hamburger:hover .circle:nth-child(7),
+.hamburger:hover .circle:nth-child(9) {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    transform: rotate(45deg);
+}
+
+.hamburger:hover .circle:nth-child(2) {
+    transform: translateX(-10px) rotate(45deg);
+    opacity: 0;
+}
+
+.hamburger:hover .circle:nth-child(4) {
+    transform: translateY(-10px) rotate(45deg);
+    opacity: 0;
+}
+
+.hamburger:hover .circle:nth-child(6) {
+    transform: translateY(10px) rotate(45deg);
+    opacity: 0;
+}
+
+.hamburger:hover .circle:nth-child(8) {
+    transform: translateX(10px) rotate(45deg);
+    opacity: 0;
+}
+
+#hamburger.is-active {
+    -webkit-transform: translateX(5vw);
+    -ms-transform: translateX(5vw);
+    -o-transform: translateX(5vw);
+    transform: translateX(5vw);
+}
+
+.fade-in {
+    animation: iconSlideIn .4s cubic-bezier(0.68, -0.55, 0.17, 1.55);
+}
+
+.smoothClose {
+    animation: smoothClose .5s ease-in;
+}
+
+.smoothOpen {
+    animation: smoothOpen .5s ease-in;
+}
+
+.slide-in {
+    animation: projectSlideIn .3s ease-in;
+    transform: translateX(-25%);
+}
+
+.slide-out {
+    animation: projectSlideOut .3s ease-in;
+    transform: translateX(-25%);
+}
+
+.smoothZoom {
+    animation: smoothZoom .3s ease-in;
+}
+
+.smoothUnZoom {
+    animation: smoothUnZoom .3s ease-in;
+}
+
+.project:hover .project-arrow {
+    @apply opacity-100 translate-x-0;
+}
+
+.project:hover .project-name {
+    @apply translate-x-0;
+}
+
 
 /********** Animation Keyframes **********/
 
-@keyframes fadeIn {
+@keyframes iconSlideIn {
     from {
         opacity: 0;
+        transform: translateY(15%);
     }
     to {
         opacity: 1;
+        transform: translateY(0%);
     }
 }
 
@@ -75,124 +215,49 @@
     }
 }
 
-/********** Generic style **********/
-
-:root {
-    --primary: #6D8FFF;
-    --secondary: #E284EB;
-    font-family: Poppins, sans-serif;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-
-    color: #333;
+@keyframes projectSlideIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-body {
-    overflow: hidden;
+@keyframes projectSlideOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
-.sections::-webkit-scrollbar {
-    display: none;
+@keyframes smoothZoom {
+    from {
+        opacity: 0;
+        transform: scale(80%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(100%);
+    }
 }
-
-
-/********** Cursor **********/
-
-.cursor {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--primary);
-    position: absolute;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    transition: width 0.3s ease, height 0.3s ease;
-}
-
-.cursor.hover {
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary);
-    opacity: .4;
-}
-
-
-/********** Components **********/
-
-.scrollOnMouse{
-    animation: scrollAnimation 3s infinite cubic-bezier(0.68, -0.55, 0.17, 1.55);
-}
-
-.hamburger:hover .circle:nth-child(1),
-.hamburger:hover .circle:nth-child(3),
-.hamburger:hover .circle:nth-child(5),
-.hamburger:hover .circle:nth-child(7),
-.hamburger:hover .circle:nth-child(9){
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-    transform: rotate(45deg);
-}
-
-.hamburger:hover .circle:nth-child(2) {
-    transform: translateX(-10px) rotate(45deg);
-    opacity: 0;
-}
-
-.hamburger:hover .circle:nth-child(4) {
-    transform: translateY(-10px) rotate(45deg);
-    opacity: 0;
-}
-
-.hamburger:hover .circle:nth-child(6) {
-    transform: translateY(10px) rotate(45deg);
-    opacity: 0;
-}
-
-.hamburger:hover .circle:nth-child(8) {
-    transform: translateX(10px) rotate(45deg);
-    opacity: 0;
-}
-
-#hamburger.is-active{
-    -webkit-transform: translateX(5vw);
-    -ms-transform: translateX(5vw);
-    -o-transform: translateX(5vw);
-    transform: translateX(5vw);
-}
-.fade-in {
-    display: block;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.smoothClose {
-    animation: smoothClose .5s ease-in;
-}
-
-.smoothOpen {
-    animation: smoothOpen .5s ease-in;
-}
-
-/********** Project arrow **********/
-
-.project:hover .project-arrow {
-    @apply opacity-100 translate-x-0;
-}
-
-.project:hover .project-name {
-    @apply translate-x-0;
+@keyframes smoothUnZoom {
+    from {
+        opacity: 1;
+        transform: scale(100%);
+    }
+    to {
+        opacity: 0;
+        transform: scale(80%);
+    }
 }
 
 /********** Responsive **********/
 
 @media (max-width: 768px) {
     .cursor {
-        display: none;
-    }
-    .mouse, .scrollOnMouse {
         display: none;
     }
 }

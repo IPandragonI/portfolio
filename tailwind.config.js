@@ -8,11 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#6D8FFF',
-        'primary-hover': '#afc5ff',
-        'secondary': '#E284EB',
-        'tertiary': '#291334',
-        'section-color': '#FAF7F5',
+        'primary': 'var(--color-primary)',
+        'primary-hover': 'var(--color-primary-hover)',
+        'secondary': 'var(--color-secondary)',
+        'tertiary': 'var(--color-tertiary)',
+        'section-color': 'var(--color-section)',
+        'text-color': 'var(--text-color)',
       },
     },
   },

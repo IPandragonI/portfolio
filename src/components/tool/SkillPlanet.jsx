@@ -1,10 +1,10 @@
 import React from 'react';
 import {SolarSystem} from "./index.js";
 
-const SkillPlanet = ({article}) => {
+const SkillPlanet = ({article, articlesNames}) => {
     const icons = [
         {
-            name: 'FRONT-END', icons: [
+            name: articlesNames[0], icons: [
                 {src: 'images/javascript.png', title: 'JavaScript'},
                 {src: 'images/tailwindcss.png', title: 'Tailwind'},
                 {src: 'images/extjs.png', title: 'ExtJs'},
@@ -12,7 +12,7 @@ const SkillPlanet = ({article}) => {
             ]
         },
         {
-            name: 'BACK-END', icons: [
+            name: articlesNames[1], icons: [
                 {src: 'images/java.png', title: 'Java'},
                 {src: 'images/php.png', title: 'PHP'},
                 {src: 'images/spring.png', title: 'Spring'},
@@ -20,7 +20,7 @@ const SkillPlanet = ({article}) => {
             ]
         },
         {
-            name: 'TOOLS', icons: [
+            name: articlesNames[2], icons: [
                 {src: 'images/git.png', title: 'Git'},
                 {src: 'images/docker.png', title: 'Docker'},
                 {src: 'images/dart.png', title: 'Dart'},

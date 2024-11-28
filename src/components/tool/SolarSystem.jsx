@@ -27,8 +27,12 @@ const SolarSystem = ({ article, icons }) => {
         camera.position.set(0, 0, 5);
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
+        controls.dampingFactor = 0.5;
+        controls.rotateSpeed = 0.5;
+        controls.minDistance = 5;
+        controls.maxDistance = 10;
 
-        animate(renderer, scene, camera, sun);
+        animate(renderer, scene, camera, sun, controls);
 
         return () => {
             mount.removeChild(renderer.domElement);
@@ -108,10 +112,11 @@ const addText = (scene, article) => {
     });
 };
 
-const animate = (renderer, scene, camera, sun) => {
+const animate = (renderer, scene, camera, sun, controls) => {
     const animateScene = () => {
         requestAnimationFrame(animateScene);
         sun.rotation.y += 0.01;
+        controls.update();
         renderer.render(scene, camera);
     };
     animateScene();

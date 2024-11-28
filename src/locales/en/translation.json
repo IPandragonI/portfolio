@@ -3,7 +3,15 @@
   "skillSection_title": "Skills",
   "projectSection_title": "Projects",
   "contactSection_title": "Contact",
+
   "heroSection_title_1": "Hi, my name is Mathys.",
   "heroSection_legend_1": "I transform lines of code into web experiments...",
-  "heroSection_legend_2": "...and debug my mistakes late at night"
+  "heroSection_legend_2": "...and debug my mistakes late at night",
+
+  "skillSection_tools": "TOOLS",
+
+  "projectSection_project_1_desc": "Symfony Application ",
+  "projectSection_project_2_desc": "Mobile Application",
+  "projectSection_project_3_desc": "UX/UI Frontend"
+
 }

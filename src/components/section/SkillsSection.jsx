@@ -8,7 +8,7 @@ const SkillsSection = () => {
     const articles = [
         {name: 'FRONT-END'},
         {name: 'BACK-END'},
-        {name: 'TOOLS'}
+        {name: t('skillSection_tools')}
     ];
 
     return (
@@ -20,14 +20,14 @@ const SkillsSection = () => {
                         <div
                             key={index}
                             onClick={() => setActive(index)}
-                            className={`text-sm md:text-xl lg:text-4xl w-1/4 md:w-auto h-16 md:h-[unset] py-4 px-2 text-center font-bold md:py-8 md:px-2 ${index === active ? 'bg-secondary' : 'bg-primary hover:bg-primary-hover'} text-white rounded-3xl cursor-hover transition ease-in duration-300`}
+                            className={`text-sm md:text-xl lg:text-4xl w-1/4 md:w-auto h-16 md:h-[unset] py-4 px-2 text-center font-bold md:py-8 md:px-2 ${index === active ? 'bg-secondary' : 'bg-primary hover:bg-primary-hover'} text-slate-50 rounded-3xl cursor-hover transition ease-in duration-300`}
                         >
                             {section.name}
                         </div>
                     ))}
                 </div>
                 <div className='w-full md:w-3/4 h-3/4 md:h-full flex items-center justify-center'>
-                    <SkillPlanet article={articles[active].name} />
+                    <SkillPlanet article={articles[active].name} articlesNames={articles.map(article => article.name)} />
                 </div>
             </div>
         </div>
