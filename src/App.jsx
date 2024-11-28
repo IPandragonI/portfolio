@@ -15,9 +15,9 @@ function App() {
     ];
 
     return (
-        <div className='relative sections'>
+        <div className='relative sections snap-y snap-mandatory overflow-y-scroll h-screen overflow-hidden bg-section-color '>
             {sections.map((section, index) => (
-                <section key={index} className={'section'}>
+                <section key={index} className={'section snap-start h-screen text-3xl w-full flex items-center justify-center'}>
                     <div className="flex w-screen h-full items-center justify-center">
                         {section.component}
                     </div>
@@ -25,7 +25,7 @@ function App() {
             ))}
             <SectionIndicator sections={sections.map(section => section.component)} />
             <ScrollMouse />
-            <div className="grainy-filter"></div>
+            <div className="grainy-filter fixed top-0 left-0 w-full h-full pointer-events-none opacity-5 z-50 mix-blend-multiply" style={{background: 'url(images/grainy.jpg)'}}></div>
         </div>
     );
 }

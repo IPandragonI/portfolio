@@ -15,7 +15,7 @@ const ContactSection = () => {
 
     return (
         <div className="flex flex-col w-9/12 py-10 h-3/6 md:py-0 absolute z-10">
-            <h1>CONTACT</h1>
+            <h1 className="text-primary font-bold text-7xl">CONTACT</h1>
             <hr className="h-[2px] my-4 rounded-3xl bg-primary border-0"/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <ContactItem title="RÉSEAUX" content="mathys.frn" link={instagramLink} />
@@ -31,9 +31,9 @@ const ContactItem = ({ title, content, onClick, link }) => (
     <div className="flex items-end">
         <h1 className="font-bold text-base lg:text-xl xl:text-3xl w-20 lg:w-32 xl:w-48">{title}</h1>
         {link ? (
-            <a className="text-sm lg:text-xl xl:text-3xl font-light link-underline cursor-hover" href={link} target="_blank" rel="noopener noreferrer">{content}</a>
+            <a className="text-sm lg:text-xl xl:text-3xl font-light relative inline-block link-underline decoration-0 after:absolute after:w-0 after:h-[.15rem] after:block after:mt-1 after:right-0 after:bg-primary after:transition[width-right] after:ease-in after:duration-300 hover:after:w-full hover:after:right-0 cursor-hover" href={link} target="_blank" rel="noopener noreferrer">{content}</a>
         ) : (
-            <a href="#" className="text-sm lg:text-xl xl:text-3xl font-light link-underline cursor-hover" onClick={onClick}>{content}</a>
+            <a href="#" className="text-sm lg:text-xl xl:text-3xl font-light relative inline-block decoration-0 link-underline after:absolute after:w-0 after:h-[.15rem] after:block after:mt-1 after:right-0 after:bg-primary after:transition[width-right] after:ease-in after:duration-300 hover:after:w-full hover:after:right-0 cursor-hover" onClick={onClick}>{content}</a>
         )}
     </div>
 );

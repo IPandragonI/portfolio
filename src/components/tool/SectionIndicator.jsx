@@ -30,11 +30,11 @@ function SectionIndicator({ sections }) {
     }, []);
 
     return (
-        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 section-indicator">
+        <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2">
             {sections.map((_, index) => (
                 <div
                     key={index}
-                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full ${index === activeSection ? 'bg-primary' : 'border-2 border-primary'}`}
+                    className={`w-2 h-2 md:w-4 md:h-4 rounded-full transition ease-in duration-300 ${index === activeSection ? 'bg-primary' : 'border-2 border-primary'}`}
                 ></div>
             ))}
         </div>

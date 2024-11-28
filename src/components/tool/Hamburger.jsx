@@ -50,7 +50,7 @@ const Hamburger = ({ sections }) => {
                 <div className="w-10/12 h-5/6 flex flex-col justify-center">
                     {sections.map((section, index) => (
                         <div key={index} className="flex items-center h-20 cursor-pointer" onClick={() => scrollToSection(index)}>
-                            <p className="font-bold text-3xl hover:text-primary transition ease-in delay-50">{section}</p>
+                            <p className="font-bold text-3xl hover:text-primary transition ease-in duration-200 cursor-hover">{section}</p>
                         </div>
                     ))}
                 </div>
@@ -59,9 +59,9 @@ const Hamburger = ({ sections }) => {
                     <p className='text-lg'>Mathys Farineau - 2024</p>
                 </div>
             </div>
-            <div className="hamburger ml-4 md:ml-8 cursor-hover" id="hamburger">
+            <div className="hamburger ml-4 md:ml-8 grid items-center justify-center grid-cols-3 gap-1 cursor-pointer cursor-hover transition duration-500 ease-in" id="hamburger">
                 {[...Array(9)].map((_, index) => (
-                    <span key={index} className="circle cursor-hover"></span>
+                    <span key={index} className="circle w-2 h-2 border-2 border-primary rounded-3xl transition duration-200 ease-in cursor-hover"></span>
                 ))}
             </div>
         </div>
