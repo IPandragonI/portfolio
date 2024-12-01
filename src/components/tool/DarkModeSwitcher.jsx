@@ -23,9 +23,9 @@ const DarkModeSwitcher = () => {
     return (
         <>
             {isDarkMode ? (
-                <Sun size={22} color="#4263d3" className='cursor-pointer cursor-hover fade-in' onClick={toggleDarkMode} />
+                <Sun size={22} color="var(--color-primary)" className='cursor-pointer cursor-hover fade-in' onClick={toggleDarkMode} />
             ) : (
-                <Moon size={22} color="#6D8FFF" className='cursor-pointer cursor-hover fade-in' onClick={toggleDarkMode} />
+                <Moon size={22} color="var(--color-primary)" className='cursor-pointer cursor-hover fade-in' onClick={toggleDarkMode} />
             )}
         </>
     );

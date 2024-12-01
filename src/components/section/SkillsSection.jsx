@@ -13,7 +13,7 @@ const SkillsSection = () => {
 
     return (
         <div className="flex flex-col md:px-0 h-full w-10/12 py-10 md:h-5/6 md:py-0 absolute z-10">
-            <h1 className='text-3xl text-center md:text-end text-primary font-bold'>{t('skillSection_title')}</h1>
+            <h1 className='text-3xl text-primary text-center md:text-end font-bold'>{t('skillSection_title')}</h1>
             <div className='w-full h-full flex flex-col py-10 md:flex-row'>
                 <div className='w-full h-1/6 md:w-1/4 md:h-full flex flex-row md:flex-col justify-evenly'>
                     {articles.map((section, index) => (

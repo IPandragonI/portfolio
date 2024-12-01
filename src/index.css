@@ -21,12 +21,12 @@
 /********** Generic style **********/
 
 html {
-    --color-primary: #6D8FFF;
-    --color-primary-hover: #aFC5FF;
-    --color-secondary: #E284EB;
+    --color-primary: #7d57ff;
+    --color-primary-hover: #b5a2d7;
+    --color-secondary: #30333c;
     --color-tertiary: #291334;
     --color-section: #FAF7F5;
-    --text-color: #333;
+    --text-color: #30333c;
 }
 
 html.dark {

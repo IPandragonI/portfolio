@@ -24,7 +24,7 @@ const SolarSystem = ({ article, icons }) => {
         createOrbit(scene);
         addText(scene, article);
 
-        camera.position.set(0, 0, 5);
+        camera.position.set(0, 0, 6);
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.5;
@@ -57,7 +57,7 @@ const addLights = (scene) => {
     dirLight.position.set(0, 0, 1).normalize();
     scene.add(dirLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 4.5, 0, 0);
+    const pointLight = new THREE.PointLight(0xffffff, 4.5, 5, 0);
     pointLight.color.setHSL(Math.random(), 1, 0.5);
     pointLight.position.set(0, 100, 90);
     scene.add(pointLight);
@@ -67,6 +67,9 @@ const createSun = (scene) => {
     const sunGeometry = new THREE.SphereGeometry(1, 128, 128);
     const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xE284EB, transparent: true, opacity: 0 });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.rotation.x = Math.PI / 3;
+    sun.rotation.y = Math.PI / 3;
+    sun.position.set(0.4, 0, 0);
     scene.add(sun);
     return sun;
 };
@@ -77,7 +80,7 @@ const createPlanets = (sun, icons) => {
         const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
         const planet = new THREE.Sprite(spriteMaterial);
         const angle = (index / icons.length) * 2 * Math.PI;
-        planet.position.set(orbitRadius * Math.cos(angle), 0, orbitRadius * Math.sin(angle));
+        planet.position.set(orbitRadius * Math.cos(angle), orbitRadius * Math.sin(angle), 0);
         sun.add(planet);
         return planet;
     });
@@ -85,7 +88,7 @@ const createPlanets = (sun, icons) => {
 
 const createOrbit = (scene) => {
     const orbitGeometry = new THREE.RingGeometry(orbitRadius - 0.04, orbitRadius + 0.04, 128);
-    const orbitMaterial = new THREE.MeshBasicMaterial({ color: 0x6D8FFF, side: THREE.DoubleSide });
+    const orbitMaterial = new THREE.MeshBasicMaterial({ color: 0x7d57ff, side: THREE.DoubleSide });
     const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
     orbit.rotation.x = Math.PI / 3;
     orbit.rotation.y = Math.PI / 3;
@@ -102,7 +105,7 @@ const addText = (scene, article) => {
             height: 0.2,
             curveSegments: 64,
         });
-        const textMaterial = new THREE.MeshBasicMaterial({ color: 0xE284EB });
+        const textMaterial = new THREE.MeshBasicMaterial({ color: 0x30333c });
         const textMesh = new THREE.Mesh(textGeometry, textMaterial);
         textGeometry.computeBoundingBox();
         if (textGeometry.boundingBox) {
@@ -115,7 +118,7 @@ const addText = (scene, article) => {
 const animate = (renderer, scene, camera, sun, controls) => {
     const animateScene = () => {
         requestAnimationFrame(animateScene);
-        sun.rotation.y += 0.01;
+        sun.rotation.z += 0.01;
         controls.update();
         renderer.render(scene, camera);
     };

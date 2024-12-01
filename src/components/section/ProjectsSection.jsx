@@ -49,7 +49,7 @@ const ProjectsSection = () => {
                             onMouseLeave={handleMouseLeave}
                         >
                             <div className='flex cursor-hover'>
-                                <ArrowRight size={32} color="#E284EB" weight="bold" className='mr-4 project-arrow transform -translate-x-10 ease-cubic duration-500 opacity-0 cursor-hover' />
+                                <ArrowRight size={32} color="var(--color-secondary)" weight="bold" className='mr-4 project-arrow transform -translate-x-10 ease-cubic duration-500 opacity-0 cursor-hover' />
                                 <div className='h-1/2 w-full flex justify-between items-center cursor-hover'>
                                     <h1 className='text-lg md:text-2xl text-primary font-bold project-name transform -translate-x-10 ease-cubic duration-500 cursor-hover '>{project.name}</h1>
                                     <p className='text-sm md:text-lg text-text-color cursor-hover'>{project.description}</p>

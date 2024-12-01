@@ -49,7 +49,7 @@ const LanguageSwitcher = () => {
 
     return (
         <div className="toggle-switch french cursor-pointer ml-4 md:ml-8" id="toggleSwitch">
-            <p id="languageText" className="text-lg text-primary hover:text-secondary transition ease-in duration-50 cursor-hover">FR</p>
+            <p id="languageText" className="text-lg text-primary hover:text-primary transition ease-in duration-50 cursor-hover">FR</p>
         </div>
     );
 }
