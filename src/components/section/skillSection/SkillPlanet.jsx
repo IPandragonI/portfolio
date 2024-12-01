@@ -1,5 +1,5 @@
 import React from 'react';
-import {SolarSystem} from "./index.js";
+import SolarSystem from "./SolarSystem.jsx";
 
 const SkillPlanet = ({article, articlesNames}) => {
     const icons = [

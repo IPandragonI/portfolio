@@ -1,14 +1,15 @@
-import {useState} from "react";
-import SkillPlanet from "../tool/SkillPlanet.jsx";
-import {useTranslation} from "react-i18next";
+import { useState } from "react";
+import SkillPlanet from "./SkillPlanet.jsx";
+import { useTranslation } from "react-i18next";
 
 const SkillsSection = () => {
     const [active, setActive] = useState(0);
+    const [animate, setAnimate] = useState(false);
     const { t } = useTranslation();
     const articles = [
-        {name: 'FRONT-END'},
-        {name: 'BACK-END'},
-        {name: t('skillSection_tools')}
+        { name: 'FRONT-END' },
+        { name: 'BACK-END' },
+        { name: t('skillSection_tools') }
     ];
 
     return (
