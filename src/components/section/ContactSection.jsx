@@ -15,7 +15,7 @@ const ContactSection = () => {
 
     return (
         <div className="flex flex-col w-9/12 py-10 h-3/6 md:py-0 absolute z-10">
-            <h1 className="text-primary font-bold text-lg md:text-3xl lg:text-7xl">CONTACT</h1>
+            <h1 className="text-primary font-bold text-3xl lg:text-7xl">CONTACT</h1>
             <hr className="h-[2px] my-4 rounded-3xl bg-primary border-0"/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <ContactItem title="RÉSEAUX" content="mathys.frn" link={instagramLink} />

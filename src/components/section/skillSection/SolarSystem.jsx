@@ -1,8 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls.js";
 
 THREE.Cache.enabled = true;
 const orbitRadius = window.innerWidth < 768 ? 2 : 2.5;
@@ -13,26 +11,18 @@ const SolarSystem = ({ article, icons }) => {
     useEffect(() => {
         const mount = mountRef.current;
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(70, 1.5, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        setRendererSize(renderer);
+        const camera = createCamera();
+        const renderer = createRenderer();
         mount.appendChild(renderer.domElement);
 
         addLights(scene);
         const sun = createSun(scene);
-        createPlanets(sun, icons);
-        createOrbit(scene);
+        const planets = createPlanets(scene, icons);
+        createOrbits(scene, icons);
+        const rocket = createRocket(scene);
 
-        const rocketSun = createRocketSun(scene);
-        createRocket(rocketSun);
-
-        camera.position.set(0, 0, 6);
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.minDistance = 5;
-        controls.maxDistance = 10;
-
-        animate(renderer, scene, camera, sun, rocketSun, controls);
+        const controls = createControls(camera, renderer);
+        animate(renderer, scene, camera, sun, planets, rocket, controls);
 
         return () => {
             mount.removeChild(renderer.domElement);
@@ -42,112 +32,117 @@ const SolarSystem = ({ article, icons }) => {
     return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
 };
 
+const createCamera = () => {
+    const camera = new THREE.PerspectiveCamera(70, 1.5, 0.1, 1000);
+    camera.position.set(0, 0, 6);
+    return camera;
+};
+
+const createRenderer = () => {
+    const renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
+    setRendererSize(renderer);
+    return renderer;
+};
+
 const setRendererSize = (renderer) => {
-    if (window.innerWidth < 768) {
-        renderer.setSize(350, 250);
-    } else if (window.innerWidth < 1024) {
-        renderer.setSize(600, 400);
+    if (window.innerWidth < 1024) {
+        renderer.setSize(700, 466);
     } else {
-        renderer.setSize(1000, 650);
+        renderer.setSize(900, 600);
     }
 };
 
 const addLights = (scene) => {
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
-    dirLight.position.set(0, 0, 1).normalize();
-    scene.add(dirLight);
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 5);
+    dirLight1.position.set(-5, -2, 0).normalize();
+    scene.add(dirLight1);
 
-    const pointLight = new THREE.PointLight(0xffffff, 4.5, 5, 0);
-    pointLight.color.setHSL(Math.random(), 1, 0.5);
-    pointLight.position.set(0, 100, 90);
-    scene.add(pointLight);
+    const dirLight2 = new THREE.DirectionalLight(0xffffff, 2);
+    dirLight2.position.set(10, 2, 5).normalize();
+    scene.add(dirLight2);
 };
 
 const createSun = (scene) => {
     const sunGeometry = new THREE.SphereGeometry(1, 128, 128);
-    const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xE284EB, transparent: true, opacity: 1 });
+    const sunMaterial = new THREE.MeshBasicMaterial({color: 0xE284EB, transparent: true, opacity: .8});
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    sun.rotation.x = Math.PI / 3;
-    sun.rotation.y = Math.PI / 3;
-    sun.position.set(0, 0, 0);
     scene.add(sun);
     return sun;
 };
 
-const createRocketSun = (scene) => {
-    const sunGeometry = new THREE.SphereGeometry(1, 128, 128);
-    const sunMaterial = new THREE.MeshBasicMaterial({ color: 'white', transparent: true, opacity: 0 });
-    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    sun.position.set(0, 0, 0);
-    scene.add(sun);
-    return sun;
-}
-
-const createPlanets = (sun, icons) => {
+const createPlanets = (scene, icons) => {
     return icons.map((icon, index) => {
         const texture = new THREE.TextureLoader().load(icon.src);
         const planetGeometry = new THREE.SphereGeometry(0.35, 16, 16);
-        const planetMaterial = new THREE.MeshStandardMaterial({ map: texture });
+        const planetMaterial = new THREE.MeshStandardMaterial({map: texture});
         const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+        const orbitIndex = Math.floor(index / Math.ceil(icons.length / icons.length));
+        const orbitRadius = 2 + orbitIndex * 0.7;
         const angle = (index / icons.length) * 2 * Math.PI;
         planet.position.set(orbitRadius * Math.cos(angle), orbitRadius * Math.sin(angle), 0);
-        sun.add(planet);
-        return planet;
+
+        const planetGroup = new THREE.Group();
+        planetGroup.add(planet);
+        planetGroup.rotation.set(Math.PI / 3, Math.PI / 3, 0);
+
+        scene.add(planetGroup);
+        return planetGroup;
     });
 };
 
-const createOrbit = (scene) => {
-    const orbitLayers = 2;
-    const layerWidth = 0.08;
-
-    for (let i = 0; i < orbitLayers; i++) {
-        const innerRadius = orbitRadius + i * layerWidth;
-        const outerRadius = innerRadius + layerWidth;
+const createOrbits = (scene, icons) => {
+    icons.map((icon, i) => {
+        const orbitIndex = Math.floor(i / Math.ceil(icons.length / icons.length));
+        const innerRadius = 2 + orbitIndex * 0.7 - 0.01;
+        const outerRadius = 2 + orbitIndex * 0.7 + 0.01;
         const color = i % 2 === 0 ? 0x7d57ff : 0xb5a2d7;
-
         const orbitGeometry = new THREE.RingGeometry(innerRadius, outerRadius, 128);
-        const orbitMaterial = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
-        const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
-        orbit.rotation.x = Math.PI / 3;
-        orbit.rotation.y = Math.PI / 3;
-        orbit.position.set(0, 0, 0);
-
-        scene.add(orbit);
-    }
-};
-
-const createRocket = (rocketSun) => {
-    const rocketGeometry = new THREE.ConeGeometry(0.1, 0.3, 32);
-    const rocketMaterial = new THREE.MeshBasicMaterial({ color: 0x30333c });
-    const rocket = new THREE.Mesh(rocketGeometry, rocketMaterial);
-    const angle = Math.PI / 2;
-    rocket.position.set(orbitRadius * Math.cos(angle), 0, orbitRadius * Math.sin(angle));
-    rocketSun.add(rocket);
-}
-
-const addText = (scene, article) => {
-    const fontLoader = new FontLoader();
-    fontLoader.load('font/helvetiker_bold.typeface.json', (font) => {
-        const textGeometry = new TextGeometry(article, {
-            font: font,
-            size: window.innerWidth < 768 ? .8 : 0.6,
-            height: 0.15,
+        const orbitMaterial = new THREE.MeshBasicMaterial({
+            color: color,
+            side: THREE.DoubleSide,
+            opacity: 0.5,
+            transparent: true
         });
-        const textMaterial = new THREE.MeshBasicMaterial({ color: 0x30333c });
-        const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-        textGeometry.computeBoundingBox();
-        if (textGeometry.boundingBox) {
-            textGeometry.translate(-textGeometry.boundingBox.max.x / 2, -0.3, 0);
-        }
-        // scene.add(textMesh);
+        const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
+
+        const orbitGroup = new THREE.Group();
+        orbitGroup.add(orbit);
+        orbitGroup.rotation.set(Math.PI / 3, Math.PI / 3, 0);
+
+        scene.add(orbitGroup);
+        return orbitGroup;
     });
 };
 
-const animate = (renderer, scene, camera, sun, rocketSun, controls) => {
+const createRocket = (scene) => {
+    const rocketGroup = new THREE.Group();
+    const rocketGeometry = new THREE.ConeGeometry(0.1, 0.3, 32);
+    const rocketMaterial = new THREE.MeshBasicMaterial({color: 0x30333c});
+    const rocket = new THREE.Mesh(rocketGeometry, rocketMaterial);
+    rocket.position.set(orbitRadius * Math.cos(Math.PI / 2), 0, orbitRadius * Math.sin(Math.PI / 2));
+    rocketGroup.add(rocket);
+    scene.add(rocketGroup);
+    return rocketGroup;
+};
+
+const createControls = (camera, renderer) => {
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.minDistance = 5;
+    controls.maxDistance = 10;
+    return controls;
+};
+
+const animate = (renderer, scene, camera, sun, planets, rocket, controls) => {
     const animateScene = () => {
         requestAnimationFrame(animateScene);
         sun.rotation.z += 0.01;
-        rocketSun.rotation.y += 0.005;
+        rocket.rotation.y += 0.01;
+        planets.forEach((planetGroup, index) => {
+            planetGroup.rotation.z += 0.01 / (1 + index * 0.7);
+            planetGroup.children[0].rotation.z += 0.01;
+        });
         controls.update();
         renderer.render(scene, camera);
     };
