@@ -64,7 +64,7 @@ const addLights = (scene) => {
 
 const createSun = (scene) => {
     const sunGeometry = new THREE.SphereGeometry(1, 128, 128);
-    const sunMaterial = new THREE.MeshBasicMaterial({color: 0xE284EB, transparent: true, opacity: .8});
+    const sunMaterial = new THREE.MeshBasicMaterial({color: 0xE284EB});
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
     return sun;

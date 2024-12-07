@@ -30,12 +30,12 @@ html {
 }
 
 html.dark {
-    --color-primary: #4263d3;
-    --color-primary-hover: #6b8fec;
-    --color-secondary: #9333EA;
-    --color-tertiary: #DDD;
+    --color-primary: #008087;
+    --color-primary-hover: #105267;
+    --color-secondary: #25ae8d;
+    --color-tertiary: #105267;
     --color-section: #1F2937;
-    --text-color: #BFC5DE;
+    --text-color: #FAF7F5;
 }
 
 body {

@@ -46,11 +46,11 @@ const createCamera = () => {
 };
 
 const addLights = (scene) => {
-    const dirLight = new THREE.DirectionalLight(0xffffff, 5);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 4);
     dirLight.position.set(0, 0, 5).normalize();
     scene.add(dirLight);
 
-    const dirLight2 = new THREE.DirectionalLight(0xffffff, 5);
+    const dirLight2 = new THREE.DirectionalLight(0xffffff, 3);
     dirLight2.position.set(0, 2, -5).normalize();
     scene.add(dirLight2);
 };
@@ -61,9 +61,7 @@ const createPlanets = (scene, icons) => {
         const planet = createPlanet(icon.src, index);
         if (isMobile) {
             planet.position.x = (index % 2) * 2 - 1;
-            planet.position.y = Math.floor(index / 2) * 2 - 1;
-        } else {
-            planet.position.x = index * 2 - 2;
+            planet.position.y = Math.floor(index / 2) * 2;
         }
         scene.add(planet);
         return planet;
@@ -71,11 +69,12 @@ const createPlanets = (scene, icons) => {
 };
 
 const createPlanet = (src, index) => {
-    const geometry = new THREE.SphereGeometry(.8, 32, 32);
+    const geometry = new THREE.SphereGeometry(.8, 16, 16);
     const texture = new THREE.TextureLoader().load(src);
     const material = new THREE.MeshPhongMaterial({map: texture});
     const planet = new THREE.Mesh(geometry, material);
     planet.position.x = index * 2 - 2;
+    planet.rotation.y = -Math.PI / 2;
     return planet;
 }
 
