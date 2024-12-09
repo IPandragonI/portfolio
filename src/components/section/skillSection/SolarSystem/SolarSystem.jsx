@@ -1,11 +1,11 @@
-import React, {useEffect, useRef} from 'react';
-import * as THREE from 'three';
+import React, {useEffect, useRef} from "react";
+import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls.js";
 
 THREE.Cache.enabled = true;
 const orbitRadius = window.innerWidth < 768 ? 2 : 2.5;
 
-const SolarSystem = ({ article, icons }) => {
+const SolarSystem = ({ icons }) => {
     const mountRef = useRef(null);
 
     useEffect(() => {
@@ -27,9 +27,9 @@ const SolarSystem = ({ article, icons }) => {
         return () => {
             mount.removeChild(renderer.domElement);
         };
-    }, [article, icons]);
+    }, [icons]);
 
-    return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
+    return <div ref={mountRef} />;
 };
 
 const createCamera = () => {
@@ -148,5 +148,4 @@ const animate = (renderer, scene, camera, sun, planets, rocket, controls) => {
     };
     animateScene();
 };
-
 export default SolarSystem;

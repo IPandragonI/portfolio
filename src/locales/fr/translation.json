@@ -9,6 +9,8 @@
   "heroSection_legend_2": "...et débug mes erreurs tard le soir",
 
   "skillSection_tools": "OUTILS",
+  "skillSection_simpleView": "Afficher la vue simplifié",
+  "skillSection_solarView": "Afficher la vue système solaire",
 
   "projectSection_project_1_desc": "Application Symfony",
   "projectSection_project_2_desc": "Application Mobile",
