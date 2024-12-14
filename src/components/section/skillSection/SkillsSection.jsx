@@ -2,37 +2,12 @@ import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import Tech from "./SimpleView/Tech.jsx";
 import SolarSystem from "./SolarSystem/SolarSystem.jsx";
+import { techTypes, techTypesPlanet } from "../../../constants";
 
 const SkillsSection = () => {
     const [active, setActive] = useState(0);
     const [isSimpleView, setIsSimpleView] = useState(false);
     const {t} = useTranslation();
-    const techTypes = [
-        {
-            name: 'FRONT-END', icons: [
-                {src: 'images/javascript.png', title: 'JavaScript'},
-                {src: 'images/pool_tailwindcss.png', title: 'Tailwind'},
-                {src: 'images/pool_extjs.png', title: 'ExtJs'},
-                {src: 'images/pool_react.png', title: 'React'}
-            ]
-        },
-        {
-            name: 'BACK-END', icons: [
-                {src: 'images/pool_java.png', title: 'Java'},
-                {src: 'images/pool_php.png', title: 'PHP'},
-                {src: 'images/pool_spring.png', title: 'Spring'},
-                {src: 'images/pool_symfony.png', title: 'Symfony'}
-            ]
-        },
-        {
-            name: t('skillSection_tools'), icons: [
-                {src: 'images/pool_git.png', title: 'Git'},
-                {src: 'images/pool_docker.png', title: 'Docker'},
-                {src: 'images/pool_dart.png', title: 'Dart'},
-                {src: 'images/pool_figma.png', title: 'Figma'}
-            ]
-        }
-    ];
 
     useEffect(() => {
         const handleResize = () => {
@@ -50,8 +25,6 @@ const SkillsSection = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    const currentIcons = techTypes[active].icons;
 
     return (
         <div className="flex flex-col md:px-0 h-full w-10/12 py-10 md:h-5/6 md:py-0 absolute z-10">
@@ -74,9 +47,9 @@ const SkillsSection = () => {
                         {isSimpleView ? t('skillSection_solarView') : t('skillSection_simpleView')}
                     </button>
                     {isSimpleView ? (
-                        <Tech icons={currentIcons}/>
+                        <Tech icons={techTypes[active].icons}/>
                     ) : (
-                        <SolarSystem icons={currentIcons}/>
+                        <SolarSystem icons={techTypesPlanet[active].icons}/>
                     )}
                 </div>
             </div>
