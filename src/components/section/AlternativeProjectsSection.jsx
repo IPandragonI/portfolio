@@ -17,6 +17,11 @@ const AlternativeProjectSection = () => {
         setActiveIndex((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
     };
 
+    const handleProjectClick = (index) => {
+        console.log(index);
+        setActiveIndex(index);
+    }
+
     return (
         <div className="flex flex-col md:px-0 h-full w-10/12 py-10 md:h-5/6 md:py-0 absolute z-10">
             <h1 className='text-3xl text-center md:text-end text-primary font-bold'>{t('projectSection_title')}</h1>
@@ -25,7 +30,7 @@ const AlternativeProjectSection = () => {
                     <div className='h-full flex flex-col items-center justify-center'>
                         <div className='flex'>
                             {projects.map((p, index) => (
-                                <div className='flex transition-transform duration-300' style={{}}>
+                                <div className='flex transition-transform duration-200' style={{}} onClick={() => handleProjectClick(index)}>
                                     <ProjectDescription key={index} activeProject={p} isActive={index === activeIndex}/>
                                 </div>
                             ))}
@@ -43,16 +48,19 @@ const AlternativeProjectSection = () => {
 
 const ProjectDescription = ({activeProject, isActive}) => {
     return (
-        <div
-            className={`h-full w-[20rem] mx-8 rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-purple-200 p-6 overflow-y-auto transition ease-in duration-300 ${isActive ? 'scale-110 opacity-100' : 'opacity-50'}`}>
+        <div className={`h-full w-[20rem] mx-8 rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-purple-200 p-6 overflow-y-auto transition ease-in duration-200 ${isActive ? 'scale-110 opacity-100' : 'opacity-50'}`}>
             <div className="flex justify-between items-center">
                 <h2 className="font-bold text-secondary">{activeProject.name}</h2>
                 <img src={activeProject.logo} alt={activeProject.name} className="w-16"/>
             </div>
             <h3 className={`${activeProject.primaryColor} text-lg mb-2`}>{activeProject.description_title}</h3>
             <p className={`m-auto pr-2 text-sm whitespace-pre-line`}>{activeProject.description}</p>
-            <p className={`mt-4 text-sm text-secondary`}><strong className="mr-2">Technologies
-                : </strong>{activeProject.tech}</p>
+            <p className={`mt-4 text-sm text-secondary`}><strong className="mr-2">Technologies : </strong>{activeProject.tech}</p>
+            <div className="flex mt-4">
+                {activeProject.techLogos.map((logo, index) => (
+                    <img key={index} src={logo} alt={logo} className="w-8 mx-2"/>
+                ))}
+            </div>
         </div>
     );
 }
