@@ -4,14 +4,6 @@ import {useTranslation} from "react-i18next";
 const Constants = () => {
     const {t} = useTranslation();
 
-    const generateImageList = (projectName) => {
-        const imageList = [];
-        for (let i = 1; i <= 4; i++) {
-            imageList.push(`images/projects/${projectName}/${i}.png`);
-        }
-        return imageList;
-    };
-
     const techTypes = [
         {
             name: 'FRONT-END', icons: [
@@ -72,7 +64,6 @@ const Constants = () => {
             description_title: t('projectSection_project_1_desc_title'),
             description: t('projectSection_project_1_desc'),
             logo: 'images/hbgg.png',
-            imageList: generateImageList('hbgg'),
             tech: "Symfony, MariaDb",
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-emerald-300",
@@ -83,7 +74,6 @@ const Constants = () => {
             description_title: t('projectSection_project_2_desc_title'),
             description: t('projectSection_project_2_desc'),
             logo: 'images/voyo.png',
-            imageList: generateImageList('voyo'),
             tech: "Flutter, Firebase",
             techLogos: ["images/flutter.png", "images/firebase.png"],
             blurColor: "from-orange-300",
@@ -94,7 +84,6 @@ const Constants = () => {
             description_title: t('projectSection_project_3_desc_title'),
             description: t('projectSection_project_3_desc'),
             logo: 'images/tindoo.png',
-            imageList: generateImageList('tindoo'),
             tech: "Symfony, MariaDb, Stripe",
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-red-300",
