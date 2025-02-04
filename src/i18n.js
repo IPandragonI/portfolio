@@ -20,9 +20,9 @@ i18n
     .init({
         resources,
         fallbackLng: 'fr',
-        interpolation: {
-            escapeValue: false
-        }
+        // interpolation: {
+        //     escapeValue: false
+        // }
     }).then(r => null);
 
 export default i18n;

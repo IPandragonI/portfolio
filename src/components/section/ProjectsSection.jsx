@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "@phosphor-icons/react";
+import Constant from "../../constants";
 
 const ProjectsSection = () => {
     const { t } = useTranslation();
     const [hoveredProject, setHoveredProject] = useState(null);
     const [isMouseOut, setIsMouseOut] = useState(false);
     const [timeoutId, setTimeoutId] = useState(null);
-
-    const projects = [
-        { name: 'HBGG', description: t('projectSection_project_1_desc'), link: 'images/hbgg.png' },
-        { name: 'Voyo', description: t('projectSection_project_2_desc'), link: 'images/voyo.png' },
-        { name: 'Portfolio', description: t('projectSection_project_3_desc'), link: 'images/portfolio.png' },
-    ];
+    const projects = Constant().projects;
 
     const handleMouseEnter = (project) => {
         if (timeoutId) {

@@ -3,7 +3,7 @@ import { useState } from 'react';
 const ContactSection = () => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const email = 'mathysf84pro@gmail.com';
-    const instagramLink = 'https://www.instagram.com/mathys.frn/';
+    const linkedinLink = 'https://www.linkedin.com/in/mathys-farineau/';
     const cvLink = 'docs/Mathys_FARINEAU.pdf';
 
     const copyToClipboard = () => {
@@ -18,7 +18,7 @@ const ContactSection = () => {
             <h1 className="text-primary font-bold text-3xl lg:text-7xl">CONTACT</h1>
             <hr className="h-[2px] my-4 rounded-3xl bg-primary border-0"/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <ContactItem title="RÉSEAUX" content="mathys.frn" link={instagramLink} />
+                <ContactItem title="LIKEDIN" content="mathys-farineau" link={linkedinLink} />
                 <ContactItem title="EMAIL" content={email} onClick={copyToClipboard} />
                 {isPopupVisible && <Popup message="Copié !" />}
                 <ContactItem title="CV" content="Mon CV" link={cvLink} />

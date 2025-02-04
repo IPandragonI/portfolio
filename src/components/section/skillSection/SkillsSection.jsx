@@ -2,19 +2,18 @@ import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import Tech from "./SimpleView/Tech.jsx";
 import SolarSystem from "./SolarSystem/SolarSystem.jsx";
-import { techTypes, techTypesPlanet } from "../../../constants";
+import Constants from "../../../constants";
 
 const SkillsSection = () => {
     const [active, setActive] = useState(0);
-    const [isSimpleView, setIsSimpleView] = useState(false);
+    const [isSimpleView, setIsSimpleView] = useState(true);
     const {t} = useTranslation();
+    const { techTypes, techTypesPlanet } = Constants();
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
                 setIsSimpleView(true);
-            } else {
-                setIsSimpleView(false);
             }
         };
 

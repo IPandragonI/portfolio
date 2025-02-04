@@ -12,8 +12,10 @@
   "skillSection_simpleView": "Show simplified view",
   "skillSection_solarView": "Show solar system view",
 
-  "projectSection_project_1_desc": "Symfony Application ",
-  "projectSection_project_2_desc": "Mobile Application",
-  "projectSection_project_3_desc": "UX/UI Frontend"
-
+  "projectSection_project_1_desc_title": "Symfony - Fullstack",
+  "projectSection_project_1_desc": "Study project for the development of a web application for managing a sports club.",
+  "projectSection_project_2_desc_title": "Flutter - Fullstack",
+  "projectSection_project_2_desc": "Study project for the development of a mobile application independently to connect people to visit apartments.",
+  "projectSection_project_3_desc_title": "Symfony - Backend",
+  "projectSection_project_3_desc": "Study project for the development of an application with a solid backend in Symfony."
 }

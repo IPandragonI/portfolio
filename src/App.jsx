@@ -2,6 +2,7 @@ import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./c
 import { SectionIndicator, ScrollMouse } from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
 import { useTranslation } from "react-i18next";
+import AlternativeProjectsSection from "./components/section/AlternativeProjectsSection.jsx";
 
 function App() {
     useCustomCursor();
@@ -10,7 +11,7 @@ function App() {
     const sections = [
         { name: t('heroSection_title'), component: <HeroSection sections={sectionsName} /> },
         { name: t('skillSection_title'), component: <SkillsSection /> },
-        { name: t('projectSection_title'), component: <ProjectsSection /> },
+        { name: t('projectSection_title'), component: <AlternativeProjectsSection /> },
         { name: t('contactSection_title'), component: <ContactSection /> }
     ];
 

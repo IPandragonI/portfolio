@@ -118,6 +118,26 @@ body {
     transform: translateX(5vw);
 }
 
+.card-holder {
+    color: var(--color-secondary);
+    &:nth-child(1){
+        transform:rotate(-10deg) translateY(25px) translateX(25px);
+        transform-origin:bottom right;
+        z-index: 2;
+    }
+    &:nth-child(2){
+        transform: translateY(20px);
+        z-index: 1;
+    }
+    &:nth-child(3){
+        transform:rotate(10deg) translateY(42px) translateX(-25px);
+        transform-origin:bottom right;
+    }
+    &.active{
+        color:darkred;
+    }
+}
+
 .fade-in {
     animation: iconSlideIn .4s cubic-bezier(0.68, -0.55, 0.17, 1.55);
 }
@@ -254,6 +274,15 @@ body {
     }
 }
 
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
 /********** Responsive **********/
 
 @media (max-width: 768px) {
