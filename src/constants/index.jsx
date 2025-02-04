@@ -61,33 +61,36 @@ const Constants = () => {
     const projects = [
         {
             name: 'HBGG',
+            image: 'images/hbggCover.png',
             description_title: t('projectSection_project_1_desc_title'),
             description: t('projectSection_project_1_desc'),
             logo: 'images/hbgg.png',
-            tech: "Symfony, MariaDb",
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-emerald-300",
-            primaryColor: "text-emerald-600"
+            primaryColor: "text-emerald-600",
+            link: "https://github.com/ipandragoni"
         },
         {
             name: 'Voyo',
+            image: 'images/voyoCover.png',
             description_title: t('projectSection_project_2_desc_title'),
             description: t('projectSection_project_2_desc'),
             logo: 'images/voyo.png',
-            tech: "Flutter, Firebase",
             techLogos: ["images/flutter.png", "images/firebase.png"],
             blurColor: "from-orange-300",
-            primaryColor: "text-orange-600"
+            primaryColor: "text-orange-600",
+            link: "https://github.com/ipandragoni"
         },
         {
             name: 'Tindoo',
+            image: 'images/tindooCover.png',
             description_title: t('projectSection_project_3_desc_title'),
             description: t('projectSection_project_3_desc'),
             logo: 'images/tindoo.png',
-            tech: "Symfony, MariaDb, Stripe",
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-red-300",
-            primaryColor: "text-red-600"
+            primaryColor: "text-red-600",
+            link: "https://github.com/achedon12/esgi-symfony"
         },
     ];
 

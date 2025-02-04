@@ -1,8 +1,7 @@
-import { ContactSection, HeroSection, ProjectsSection, SkillsSection } from "./components/section";
+import { ContactSection, HeroSection, AlternativeProjectsSection, SkillsSection } from "./components/section";
 import { SectionIndicator, ScrollMouse } from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
 import { useTranslation } from "react-i18next";
-import AlternativeProjectsSection from "./components/section/AlternativeProjectsSection.jsx";
 
 function App() {
     useCustomCursor();

@@ -2,7 +2,7 @@ import {useTranslation} from "react-i18next";
 import {useState} from 'react';
 import React from 'react';
 import Constant from "../../constants";
-import {CaretLeft, CaretRight} from "@phosphor-icons/react";
+import {CaretLeft, CaretRight, Code} from "@phosphor-icons/react";
 
 const AlternativeProjectSection = () => {
     const {t} = useTranslation();
@@ -18,7 +18,6 @@ const AlternativeProjectSection = () => {
     };
 
     const handleProjectClick = (index) => {
-        console.log(index);
         setActiveIndex(index);
     }
 
@@ -28,14 +27,14 @@ const AlternativeProjectSection = () => {
             <div className='h-full w-full flex justify-center'>
                 <section className='w-11/12 h-5/6 flex flex-col items-center justify-center mt-5'>
                     <div className='h-full flex flex-col items-center justify-center'>
-                        <div className='flex'>
+                        <div className='flex h-full w-5/6'>
                             {projects.map((p, index) => (
-                                <div className='flex transition-transform duration-200' style={{}} onClick={() => handleProjectClick(index)}>
+                                <div className='flex transition-transform duration-200 w-1/3 h-full' style={{}} onClick={() => handleProjectClick(index)}>
                                     <ProjectDescription key={index} activeProject={p} isActive={index === activeIndex}/>
                                 </div>
                             ))}
                         </div>
-                        <div className='flex mt-8 justify-between w-1/6'>
+                        <div className='flex justify-between w-1/6 mt-10'>
                             <CaretLeft onClick={handlePrevClick} size={32} className={'cursor-hover'} />
                             <CaretRight onClick={handleNextClick} size={32} className={'cursor-hover'} />
                         </div>
@@ -48,18 +47,23 @@ const AlternativeProjectSection = () => {
 
 const ProjectDescription = ({activeProject, isActive}) => {
     return (
-        <div className={`h-full w-[20rem] mx-8 rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-purple-200 p-6 overflow-y-auto transition ease-in duration-200 ${isActive ? 'scale-110 opacity-100' : 'opacity-50'}`}>
-            <div className="flex justify-between items-center">
-                <h2 className="font-bold text-secondary">{activeProject.name}</h2>
-                <img src={activeProject.logo} alt={activeProject.name} className="w-16"/>
+        <div className={`h-full w-full mx-6 flex flex-col justify-between rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-white p-4 overflow-y-auto transition ease-in duration-200 ${isActive ? 'scale-110 opacity-100' : 'opacity-50'}`}>
+            <div className={'flex flex-col'}>
+                <div className={'w-full h-52 bg-white rounded-xl overflow-hidden mb-4'}>
+                    <img src={activeProject.image} alt={activeProject.name} className="object-cover rounded-sm w-full h-full"/>
+                </div>
+                <div className="flex justify-between items-center">
+                    <h2 className="font-bold text-secondary text-2xl">{activeProject.name}</h2>
+                    <img src={activeProject.logo} alt={activeProject.name} className="w-8 mr-4"/>
+                </div>
+                <h3 className={`${activeProject.primaryColor} text-sm`}>{activeProject.description_title}</h3>
+                <p className={`pr-2 text-xs my-2`}>{activeProject.description}</p>
             </div>
-            <h3 className={`${activeProject.primaryColor} text-lg mb-2`}>{activeProject.description_title}</h3>
-            <p className={`m-auto pr-2 text-sm whitespace-pre-line`}>{activeProject.description}</p>
-            <p className={`mt-4 text-sm text-secondary`}><strong className="mr-2">Technologies : </strong>{activeProject.tech}</p>
-            <div className="flex mt-4">
-                {activeProject.techLogos.map((logo, index) => (
-                    <img key={index} src={logo} alt={logo} className="w-8 mx-2"/>
-                ))}
+
+            <div className={`flex justify-center`}>
+                <a href={activeProject.link} target="_blank" rel="noreferrer" className={`w-3/4 flex justify-center items-center bg-white rounded-xl p-2 cursor-hover ${isActive ?'' : 'pointer-events-none'}`}>
+                    <Code size={28} className={`${activeProject.primaryColor} cursor-hover`}/>
+                </a>
             </div>
         </div>
     );

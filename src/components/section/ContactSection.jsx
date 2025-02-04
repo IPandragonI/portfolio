@@ -5,6 +5,7 @@ const ContactSection = () => {
     const email = 'mathysf84pro@gmail.com';
     const linkedinLink = 'https://www.linkedin.com/in/mathys-farineau/';
     const cvLink = 'docs/Mathys_FARINEAU.pdf';
+    const githubLink = 'https://github.com/IPandragonI';
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(email).then(() => {
@@ -21,6 +22,7 @@ const ContactSection = () => {
                 <ContactItem title="LIKEDIN" content="mathys-farineau" link={linkedinLink} />
                 <ContactItem title="EMAIL" content={email} onClick={copyToClipboard} />
                 {isPopupVisible && <Popup message="Copié !" />}
+                <ContactItem title="GITHUB" content="IPandragonI" link={githubLink} />
                 <ContactItem title="CV" content="Mon CV" link={cvLink} />
             </div>
         </div>
@@ -29,7 +31,7 @@ const ContactSection = () => {
 
 const ContactItem = ({ title, content, onClick, link }) => (
     <div className="flex items-end">
-        <h1 className="font-bold text-base lg:text-xl xl:text-3xl text-primary w-20 lg:w-32 xl:w-48">{title}</h1>
+        <h1 className="font-bold text-base lg:text-xl xl:text-3xl text-primary w-20 lg:w-32 xl:w-36">{title}</h1>
         {link ? (
             <a className="text-sm lg:text-xl xl:text-3xl text-text-color font-light relative inline-block link-underline decoration-0 after:absolute after:w-0 after:h-[.15rem] after:block after:mt-1 after:right-0 after:bg-primary after:transition[width-right] after:ease-in after:duration-300 hover:after:w-full hover:after:right-0 cursor-hover" href={link} target="_blank">{content}</a>
         ) : (
