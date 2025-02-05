@@ -3,6 +3,7 @@ import {useTranslation} from "react-i18next";
 import Tech from "./SimpleView/Tech.jsx";
 import SolarSystem from "./SolarSystem/SolarSystem.jsx";
 import Constants from "../../../constants";
+import {CircleDashed, Planet} from "@phosphor-icons/react";
 
 const SkillsSection = () => {
     const [active, setActive] = useState(0);
@@ -40,15 +41,18 @@ const SkillsSection = () => {
                 </div>
                 <div className='w-full md:w-3/4 h-full md:h-full flex items-center justify-center'>
                     {isWideScreen && (
-                        <button onClick={() => setIsSimpleView(!isSimpleView)}
-                                className="bg-tertiary text-white text-xs px-4 py-2 rounded-3xl absolute bottom-14 left-1/2 -translate-x-1/2 -translate-y-1/2  md:bottom-[unset] md:left-[unset] md:translate-x-[unset] md:translate-y-[unset] md:top-20 md:right-0 transition ease-in duration-300 cursor-hover">
-                            {isSimpleView ? t('skillSection_solarView') : t('skillSection_simpleView')}
-                        </button>
+                        <div className='absolute right-2 top-20'>
+                            {isSimpleView ? (
+                                <Planet size={22} color="var(--color-primary)" className='cursor-pointer cursor-hover' onClick={() => setIsSimpleView(!isSimpleView)} />
+                            ) : (
+                                <CircleDashed  size={22} color="var(--color-primary)" className='cursor-pointer cursor-hover' onClick={() => setIsSimpleView(!isSimpleView)} />
+                            )}
+                        </div>
                     )}
                     {isSimpleView ? (
-                        <Tech icons={techTypes[active].icons}/>
+                        <Tech icons={techTypes[active].icons} />
                     ) : (
-                        <SolarSystem icons={techTypesPlanet[active].icons}/>
+                        <SolarSystem icons={techTypesPlanet[active].icons} />
                     )}
                 </div>
             </div>

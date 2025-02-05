@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { ContactSection, HeroSection, AlternativeProjectsSection, SkillsSection } from "./components/section";
 import { SectionIndicator, ScrollMouse } from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
 import { useTranslation } from "react-i18next";
+import GlobalLoader from './components/tool/GlobalLoader';
 
 function App() {
     useCustomCursor();
@@ -13,6 +15,24 @@ function App() {
         { name: t('projectSection_title'), component: <AlternativeProjectsSection /> },
         { name: t('contactSection_title'), component: <ContactSection /> }
     ];
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const handleLoad = () => {
+            setTimeout(() => setIsLoading(false), 1000);
+        };
+
+        window.addEventListener('load', handleLoad);
+
+        return () => {
+            window.removeEventListener('load', handleLoad);
+        };
+    }, []);
+
+    if (isLoading) {
+        return <GlobalLoader />;
+    }
 
     return (
         <div className='relative sections snap-y snap-mandatory overflow-y-scroll h-screen overflow-hidden bg-section-color '>

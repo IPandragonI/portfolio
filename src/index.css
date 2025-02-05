@@ -30,17 +30,18 @@ html {
 }
 
 html.dark {
-    --color-primary: #008087;
-    --color-primary-hover: #105267;
-    --color-secondary: #25ae8d;
-    --color-tertiary: #105267;
-    --color-section: #1F2937;
-    --text-color: #FAF7F5;
+    --color-primary: #b756a0;
+    --color-primary-hover: #671f57;
+    --color-secondary: #401943;
+    --color-tertiary: #e5c4e8;
+    --color-section: #130e23;
+    --text-color: #eaeaf6;
 }
 
 body {
     overflow: hidden;
     font-family: Poppins, sans-serif;
+    background-color: var(--color-section);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -50,6 +51,51 @@ body {
 
 .sections::-webkit-scrollbar {
     display: none;
+}
+
+.global-loader {
+    font-family: Poppins, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-section);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+    opacity: 1;
+
+    .loader {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid var(--color-primary);
+        border-top-color: transparent;
+        animation: orbit 1s linear infinite;
+        transition: all 1s ease;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 4rem;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        color: var(--color-secondary);
+        transition: opacity 1s ease;
+    }
+
+    &.loaded {
+        opacity: 0;
+        pointer-events: none;
+        footer {
+            opacity: 0;
+        }
+    }
 }
 
 

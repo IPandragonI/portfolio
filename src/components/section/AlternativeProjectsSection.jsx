@@ -42,11 +42,11 @@ const AlternativeProjectSection = () => {
                         })}
                     </div>
                     <div className='flex justify-between mt-10'>
-                        <div className={'flex justify-center items-center cursor-hover bg-white rounded-full p-4 mx-4 hover:bg-gray-200 transition ease-in-out duration-100'}>
-                            <CaretLeft onClick={handlePrevClick} size={32} className={'cursor-hover'} />
+                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-text-color transition ease-in-out duration-200'}>
+                            <CaretLeft onClick={handlePrevClick} size={32} className={'cursor-hover text-primary'} />
                         </div>
-                        <div className={'flex justify-center items-center cursor-hover bg-white rounded-full p-4 mx-4 hover:bg-gray-200 transition ease-in-out duration-100'}>
-                            <CaretRight onClick={handleNextClick} size={32} className={'cursor-hover'} />
+                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-text-color transition ease-in-out duration-200'}>
+                            <CaretRight onClick={handleNextClick} size={32} className={'cursor-hover text-primary'} />
                         </div>
                     </div>
                 </section>
