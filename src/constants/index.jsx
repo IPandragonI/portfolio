@@ -62,30 +62,40 @@ const Constants = () => {
         {
             name: 'HBGG',
             image: 'images/hbggCover.png',
-            description_title: t('projectSection_project_1_desc_title'),
+            description_title: 'Symfony - Fullstack',
             description: t('projectSection_project_1_desc'),
             logo: 'images/hbgg.png',
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-emerald-300",
             primaryColor: "text-emerald-600",
-            link: "https://github.com/ipandragoni"
+            link: "https://github.com/IPandragonI/HBGG"
         },
         {
             name: 'Voyo',
             image: 'images/voyoCover.png',
-            description_title: t('projectSection_project_2_desc_title'),
+            description_title: 'Flutter - Fullstack',
             description: t('projectSection_project_2_desc'),
             logo: 'images/voyo.png',
             techLogos: ["images/flutter.png", "images/firebase.png"],
             blurColor: "from-orange-300",
             primaryColor: "text-orange-600",
-            link: "https://github.com/ipandragoni"
+            link: "https://github.com/IPandragonI/Voyo"
         },
         {
+            name: 'Envo Agent Mind',
+            image: 'images/EAMCover.png',
+            description_title: 'Java - Backend',
+            description: t('projectSection_project_3_desc'),
+            logo: 'images/EAM.png',
+            techLogos: ["images/java.png"],
+            blurColor: "from-blue-300",
+            primaryColor: "text-blue-600",
+            link: "https://github.com/IPandragonI/Envo-Agent-Mind"
+        }, {
             name: 'Tindoo',
             image: 'images/tindooCover.png',
-            description_title: t('projectSection_project_3_desc_title'),
-            description: t('projectSection_project_3_desc'),
+            description_title: 'Symfony - Backend',
+            description: t('projectSection_project_4_desc'),
             logo: 'images/tindoo.png',
             techLogos: ["images/symfony.png", "images/db.png"],
             blurColor: "from-red-300",

@@ -63,8 +63,8 @@ const ProjectDescription = ({activeProject, isActive, style, onClick}) => {
             </div>
             <div className={'flex flex-col'}>
                 <div className="flex justify-between items-center">
-                    <h2 className="font-bold text-secondary text-2xl">{activeProject.name}</h2>
-                    <img src={activeProject.logo} alt={activeProject.name} className="w-8 mr-4"/>
+                    <h2 className="font-bold text-secondary text-xl">{activeProject.name}</h2>
+                    <img src={activeProject.logo} alt={activeProject.name} className="w-8 mx-4"/>
                 </div>
                 <h3 className={`${activeProject.primaryColor} text-sm`}>{activeProject.description_title}</h3>
                 <p className={`pr-2 text-xs my-1`}>{activeProject.description}</p>
