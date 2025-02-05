@@ -24,7 +24,7 @@ const AlternativeProjectSection = () => {
     return (
         <div className="flex flex-col md:px-0 h-full w-10/12 py-10 md:h-5/6 md:py-0 absolute z-10">
             <h1 className='text-3xl text-center md:text-end text-primary font-bold'>{t('projectSection_title')}</h1>
-            <div className='h-full w-full flex justify-center'>
+            <div className='h-full w-full flex justify-center items-center'>
                 <section className='w-11/12 h-5/6 flex flex-col items-center justify-center mt-5'>
                     <div className='relative flex md:h-[34rem] md:w-64 h-96 w-52'>
                         {projects.map((p, index) => {
