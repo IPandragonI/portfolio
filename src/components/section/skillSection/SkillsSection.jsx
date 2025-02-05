@@ -7,17 +7,15 @@ import Constants from "../../../constants";
 const SkillsSection = () => {
     const [active, setActive] = useState(0);
     const [isSimpleView, setIsSimpleView] = useState(true);
+    const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 768);
     const {t} = useTranslation();
     const { techTypes, techTypesPlanet } = Constants();
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setIsSimpleView(true);
-            }
+            setIsWideScreen(window.innerWidth > 768);
         };
 
-        handleResize();
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -41,10 +39,12 @@ const SkillsSection = () => {
                     ))}
                 </div>
                 <div className='w-full md:w-3/4 h-full md:h-full flex items-center justify-center'>
-                    <button onClick={() => setIsSimpleView(!isSimpleView)}
-                            className="bg-tertiary text-white text-xs px-4 py-2 rounded-3xl absolute bottom-14 left-1/2 -translate-x-1/2 -translate-y-1/2  md:bottom-[unset] md:left-[unset] md:translate-x-[unset] md:translate-y-[unset] md:top-20 md:right-0 transition ease-in duration-300 cursor-hover">
-                        {isSimpleView ? t('skillSection_solarView') : t('skillSection_simpleView')}
-                    </button>
+                    {isWideScreen && (
+                        <button onClick={() => setIsSimpleView(!isSimpleView)}
+                                className="bg-tertiary text-white text-xs px-4 py-2 rounded-3xl absolute bottom-14 left-1/2 -translate-x-1/2 -translate-y-1/2  md:bottom-[unset] md:left-[unset] md:translate-x-[unset] md:translate-y-[unset] md:top-20 md:right-0 transition ease-in duration-300 cursor-hover">
+                            {isSimpleView ? t('skillSection_solarView') : t('skillSection_simpleView')}
+                        </button>
+                    )}
                     {isSimpleView ? (
                         <Tech icons={techTypes[active].icons}/>
                     ) : (
