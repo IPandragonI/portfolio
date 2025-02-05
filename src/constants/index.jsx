@@ -25,7 +25,7 @@ const Constants = () => {
             name: 'TOOLS', icons: [
                 {src: 'images/git.png', title: 'Git'},
                 {src: 'images/docker.png', title: 'Docker'},
-                {src: 'images/dart.png', title: 'Dart'},
+                {src: 'images/flutter.png', title: 'Flutter'},
                 {src: 'images/figma.png', title: 'Figma'}
             ]
         }

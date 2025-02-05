@@ -26,16 +26,26 @@ const AlternativeProjectSection = () => {
             <h1 className='text-3xl text-center md:text-end text-primary font-bold'>{t('projectSection_title')}</h1>
             <div className='h-full w-full flex justify-center'>
                 <section className='w-11/12 h-5/6 flex flex-col items-center justify-center mt-5'>
-                    <div className='h-full flex flex-col items-center justify-center'>
-                        <div className='flex h-full w-5/6'>
-                            {projects.map((p, index) => (
-                                <div className='flex transition-transform duration-200 w-1/3 h-full' style={{}} onClick={() => handleProjectClick(index)}>
-                                    <ProjectDescription key={index} activeProject={p} isActive={index === activeIndex}/>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='flex justify-between w-1/6 mt-10'>
+                    <div className='relative flex md:h-[34rem] md:w-64 h-96 w-52'>
+                        {projects.map((p, index) => {
+                            return (
+                                <ProjectDescription
+                                    key={index}
+                                    activeProject={p}
+                                    isActive={index === activeIndex}
+                                    style={{
+                                        transform: `translateX(${(index - activeIndex) * 120}%) ${index === activeIndex ? 'scale(1.1)' : ''}`
+                                    }}
+                                    onClick={() => handleProjectClick(index)}
+                                />
+                            )
+                        })}
+                    </div>
+                    <div className='flex justify-between mt-10'>
+                        <div className={'flex justify-center items-center cursor-hover bg-white rounded-full p-4 mx-4 hover:bg-gray-200 transition ease-in-out duration-100'}>
                             <CaretLeft onClick={handlePrevClick} size={32} className={'cursor-hover'} />
+                        </div>
+                        <div className={'flex justify-center items-center cursor-hover bg-white rounded-full p-4 mx-4 hover:bg-gray-200 transition ease-in-out duration-100'}>
                             <CaretRight onClick={handleNextClick} size={32} className={'cursor-hover'} />
                         </div>
                     </div>
@@ -45,22 +55,22 @@ const AlternativeProjectSection = () => {
     );
 }
 
-const ProjectDescription = ({activeProject, isActive}) => {
+const ProjectDescription = ({activeProject, isActive, style, onClick}) => {
     return (
-        <div className={`h-full w-full mx-6 flex flex-col justify-between rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-white p-4 overflow-y-auto transition ease-in duration-200 ${isActive ? 'scale-110 opacity-100' : 'opacity-50'}`}>
+        <div className={`absolute h-full w-full flex flex-col justify-between rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-white p-4 overflow-y-auto transition ease-in duration-300 ${isActive ? 'opacity-100' : 'opacity-50'}`} style={style} onClick={onClick}>
+            <div className={'flex w-full h-52 bg-white rounded-xl overflow-hidden mb-2'}>
+                <img src={activeProject.image} alt={activeProject.name} className="object-cover rounded-sm w-full h-full"/>
+            </div>
             <div className={'flex flex-col'}>
-                <div className={'w-full h-52 bg-white rounded-xl overflow-hidden mb-4'}>
-                    <img src={activeProject.image} alt={activeProject.name} className="object-cover rounded-sm w-full h-full"/>
-                </div>
                 <div className="flex justify-between items-center">
                     <h2 className="font-bold text-secondary text-2xl">{activeProject.name}</h2>
                     <img src={activeProject.logo} alt={activeProject.name} className="w-8 mr-4"/>
                 </div>
                 <h3 className={`${activeProject.primaryColor} text-sm`}>{activeProject.description_title}</h3>
-                <p className={`pr-2 text-xs my-2`}>{activeProject.description}</p>
+                <p className={`pr-2 text-xs my-1`}>{activeProject.description}</p>
             </div>
 
-            <div className={`flex justify-center`}>
+            <div className={`flex justify-center mt-2`}>
                 <a href={activeProject.link} target="_blank" rel="noreferrer" className={`w-3/4 flex justify-center items-center bg-white rounded-xl p-2 cursor-hover ${isActive ?'' : 'pointer-events-none'}`}>
                     <Code size={28} className={`${activeProject.primaryColor} cursor-hover`}/>
                 </a>

@@ -40,7 +40,7 @@ const SkillsSection = () => {
                         </div>
                     ))}
                 </div>
-                <div className='w-full md:w-3/4 h-3/4 md:h-full flex items-center justify-center'>
+                <div className='w-full md:w-3/4 h-full md:h-full flex items-center justify-center'>
                     <button onClick={() => setIsSimpleView(!isSimpleView)}
                             className="bg-tertiary text-white text-xs px-4 py-2 rounded-3xl absolute bottom-14 left-1/2 -translate-x-1/2 -translate-y-1/2  md:bottom-[unset] md:left-[unset] md:translate-x-[unset] md:translate-y-[unset] md:top-20 md:right-0 transition ease-in duration-300 cursor-hover">
                         {isSimpleView ? t('skillSection_solarView') : t('skillSection_simpleView')}
