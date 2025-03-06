@@ -42,10 +42,10 @@ const AlternativeProjectSection = () => {
                         })}
                     </div>
                     <div className='flex justify-between mt-10'>
-                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-text-color transition ease-in-out duration-200'}>
+                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-slate-100 transition ease-in-out duration-200'}>
                             <CaretLeft onClick={handlePrevClick} size={32} className={'cursor-hover text-primary'} />
                         </div>
-                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-text-color transition ease-in-out duration-200'}>
+                        <div className={'flex justify-center items-center cursor-hover rounded-full p-2 mx-4 bg-gray-200 hover:bg-slate-100 transition ease-in-out duration-200'}>
                             <CaretRight onClick={handleNextClick} size={32} className={'cursor-hover text-primary'} />
                         </div>
                     </div>
@@ -57,9 +57,9 @@ const AlternativeProjectSection = () => {
 
 const ProjectDescription = ({activeProject, isActive, style, onClick}) => {
     return (
-        <div className={`absolute h-full w-full flex flex-col justify-between rounded-3xl bg-gradient-to-br ${activeProject.blurColor} to-white p-4 overflow-y-auto transition ease-in duration-300 ${isActive ? 'opacity-100' : 'opacity-50'}`} style={style} onClick={onClick}>
-            <div className={'flex w-full h-52 bg-white rounded-xl overflow-hidden mb-2'}>
-                <img src={activeProject.image} alt={activeProject.name} className="object-cover rounded-sm w-full h-full"/>
+        <div className={`absolute p-4 h-full w-full flex flex-col justify-between rounded-2xl bg-white border ${activeProject.borderColor} overflow-y-auto transition ease-in duration-300 ${isActive ? 'opacity-100' : 'opacity-50'}`} style={style} onClick={onClick}>
+            <div className={'flex w-full h-52  rounded-lg overflow-hidden mb-4'}>
+                <img src={activeProject.image} alt={activeProject.name} className="object-cover w-full h-full"/>
             </div>
             <div className={'flex flex-col'}>
                 <div className="flex justify-between items-center">
@@ -70,9 +70,9 @@ const ProjectDescription = ({activeProject, isActive, style, onClick}) => {
                 <p className={`pr-2 text-xs my-1`}>{activeProject.description}</p>
             </div>
 
-            <div className={`flex justify-center mt-2`}>
-                <a href={activeProject.link} target="_blank" rel="noreferrer" className={`w-3/4 flex justify-center items-center bg-white rounded-xl p-2 cursor-hover ${isActive ?'' : 'pointer-events-none'}`}>
-                    <Code size={28} className={`${activeProject.primaryColor} cursor-hover`}/>
+            <div className={`flex justify-center my-2`}>
+                <a href={activeProject.link} target="_blank" rel="noreferrer" className={`w-1/3 flex justify-center items-center ${activeProject.bgColor} rounded-xl p-2 cursor-hover ${isActive ?'' : 'pointer-events-none'}`}>
+                    <Code size={28} className={`text-white cursor-hover`}/>
                 </a>
             </div>
         </div>

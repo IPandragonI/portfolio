@@ -66,7 +66,8 @@ const Constants = () => {
             description: t('projectSection_project_1_desc'),
             logo: 'images/hbgg.png',
             techLogos: ["images/symfony.png", "images/db.png"],
-            blurColor: "from-emerald-300",
+            borderColor: "border-emerald-300",
+            bgColor: "bg-emerald-300",
             primaryColor: "text-emerald-600",
             link: "https://github.com/IPandragonI/HBGG"
         },
@@ -77,7 +78,8 @@ const Constants = () => {
             description: t('projectSection_project_2_desc'),
             logo: 'images/voyo.png',
             techLogos: ["images/flutter.png", "images/firebase.png"],
-            blurColor: "from-orange-300",
+            borderColor: "border-orange-300",
+            bgColor: "bg-orange-300",
             primaryColor: "text-orange-600",
             link: "https://github.com/IPandragonI/Voyo"
         },
@@ -88,7 +90,8 @@ const Constants = () => {
             description: t('projectSection_project_3_desc'),
             logo: 'images/EAM.png',
             techLogos: ["images/java.png"],
-            blurColor: "from-blue-300",
+            borderColor: "border-blue-300",
+            bgColor: "bg-blue-300",
             primaryColor: "text-blue-600",
             link: "https://github.com/IPandragonI/Envo-Agent-Mind"
         }, {
@@ -98,7 +101,8 @@ const Constants = () => {
             description: t('projectSection_project_4_desc'),
             logo: 'images/tindoo.png',
             techLogos: ["images/symfony.png", "images/db.png"],
-            blurColor: "from-red-300",
+            borderColor: "border-red-300",
+            bgColor: "bg-red-300",
             primaryColor: "text-red-600",
             link: "https://github.com/achedon12/esgi-symfony"
         },
