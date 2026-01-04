@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "@phosphor-icons/react";
-import Constant from "../../constants";
 
-const ProjectsSection = () => {
+const ProjectsSection = ({githubProjects}) => {
     const { t } = useTranslation();
     const [hoveredProject, setHoveredProject] = useState(null);
     const [isMouseOut, setIsMouseOut] = useState(false);
     const [timeoutId, setTimeoutId] = useState(null);
-    const projects = Constant().projects;
 
     const handleMouseEnter = (project) => {
         if (timeoutId) {
@@ -36,23 +34,27 @@ const ProjectsSection = () => {
                         </div>
                     )}
                 </div>
-                <div className='h-full w-full md:w-2/6 flex flex-col justify-center'>
-                    {projects.map((project, index) => (
-                        <div
+                <div className='w-full md:w-2/6 flex flex-col justify-center overflow-y-auto h-5/6 my-auto'>
+                    {githubProjects.map((project, index) => (
+                        <a
                             key={index}
-                            className='my-6 project cursor-hover'
+                            className='my-6 project cursor-hover cursor-pointer'
                             onMouseEnter={() => handleMouseEnter(project)}
                             onMouseLeave={handleMouseLeave}
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <div className='flex cursor-hover'>
                                 <ArrowRight size={32} color="var(--color-secondary)" weight="bold" className='mr-4 project-arrow transform -translate-x-10 ease-cubic duration-500 opacity-0 cursor-hover' />
                                 <div className='h-1/2 w-full flex justify-between items-center cursor-hover'>
                                     <h1 className='text-lg md:text-2xl text-primary font-bold project-name transform -translate-x-10 ease-cubic duration-500 cursor-hover '>{project.name}</h1>
                                     <p className='text-sm md:text-lg text-text-color cursor-hover'>{project.description}</p>
+                                    <p className='text-sm md:text-lg text-text-color cursor-hover'>{project.language}</p>
                                 </div>
                             </div>
                             <hr className='w-full my-2 border-2 border-primary border-opacity-60 cursor-hover' />
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>
