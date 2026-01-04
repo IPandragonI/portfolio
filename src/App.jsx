@@ -9,7 +9,7 @@ async function fetchGitLabProjects() {
     try {
         const GITLAB_USERNAME = 'ipandragoni';
         const repos = [];
-        const userResp = await fetch('https://api.github.com/users/' + GITLAB_USERNAME + '/repos');
+        const userResp = await fetch('https://api.github.com/users/' + GITLAB_USERNAME + '/starred');
         if (!userResp.ok) {
             console.error('GitLab user lookup failed', userResp.status);
             return [];
@@ -21,51 +21,30 @@ async function fetchGitLabProjects() {
             repos.push(...users);
         }
 
-        const projectsResp = await fetch('https://api.github.com/users/' + GITLAB_USERNAME + '/repos?type=member')
-        if (!projectsResp.ok) {
-            console.error('GitLab projects fetch failed', projectsResp.status);
-            return [];
-        }
-        const projects = await projectsResp.json();
-        if (!Array.isArray(projects) || projects.length === 0) {
-            return []
-        } else {
-            repos.push(...projects);
-        }
+        console.log(repos)
 
         const mapped = repos.map(p => ({
             name: p.name,
             description: p.description,
             link: p.html_url,
             language: p.language,
-            stars: typeof p.star_count === 'number' ? p.star_count : 0,
-            lastActivity: p.last_activity_at ? new Date(p.last_activity_at).getTime() : 0
+            updated_at: p.updated_at ? new Date(p.updated_at).getTime() : 0,
         }));
-
-        const maxStars = Math.max(...mapped.map(p => p.stars), 1);
-        const minActivity = Math.min(...mapped.map(p => p.lastActivity));
-        const maxActivity = Math.max(...mapped.map(p => p.lastActivity), minActivity + 1);
 
         const scored = mapped.map(p => {
-            const normalizedStars = p.stars / maxStars;
-            const normalizedRecency = (p.lastActivity - minActivity) / (maxActivity - minActivity);
-            const score = 0.6 * normalizedStars + 0.4 * normalizedRecency;
-            return { ...p, score };
+            let score = 0;
+            const now = Date.now();
+            const ageInDays = (now - p.updated_at) / (1000 * 60 * 60 * 24);
+            score += Math.max(0, 365 - ageInDays);
+            if (p.language) {
+                score += 10;
+            }
+            return {...p, score};
         });
 
-        scored.sort((a, b) => {
-            if (b.score !== a.score) return b.score - a.score;
-            return b.lastActivity - a.lastActivity;
-        });
+        scored.sort((a, b) => b.score - a.score);
 
-        return scored.slice(0, 6).map(p => ({
-            name: p.name,
-            description: p.description,
-            link: p.link,
-            language: p.language,
-            stars: p.stars,
-            lastActivity: p.lastActivity
-        }));
+        return scored.slice(0, 4);
     } catch (error) {
         console.error('Error fetching GitLab projects:', error);
         return [];
@@ -76,6 +55,7 @@ function App() {
     useCustomCursor();
     const { t } = useTranslation();
     const [githubProjects, setGithubProjects] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const sectionsName = [t('heroSection_title'), t('skillSection_title'), t('projectSection_title'), t('contactSection_title')];
     const sections = [
         { name: t('heroSection_title'), component: <HeroSection sections={sectionsName} /> },
@@ -83,19 +63,26 @@ function App() {
         { name: t('projectSection_title'), component: <ProjectSection githubProjects={githubProjects}/> },
         { name: t('contactSection_title'), component: <ContactSection /> }
     ];
-    console.log(githubProjects);
-
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const handleLoad = () => {
-            setTimeout(() => setIsLoading(false), 1000);
+        let mounted = true;
+        const loadProjects = async () => {
+            try {
+                setIsLoading(true);
+                const projects = await fetchGitLabProjects();
+                if (!mounted) return;
+                setGithubProjects(projects);
+            } catch (e) {
+                console.error('Failed to load projects in App effect', e);
+            } finally {
+                if (mounted) setIsLoading(false);
+            }
         };
 
-        window.addEventListener('load', handleLoad);
-        fetchGitLabProjects().then(projects => setGithubProjects(projects));
+        loadProjects();
+
         return () => {
-            window.removeEventListener('load', handleLoad);
+            mounted = false;
         };
     }, []);
 

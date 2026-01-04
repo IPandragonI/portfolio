@@ -16,8 +16,8 @@ const SkillsSection = () => {
                     {techTypes.map((section, index) => (
                         <div
                             key={index}
-                            onClick={() => setActive(index)}
-                            className={`text-center font-bold text-sm md:text-xl lg:text-4xl w-2/6 md:w-full h-16 md:h-24 mx-2 md:mx-0 my-5 flex flex-col justify-center items-center ${index === active ? 'bg-secondary' : 'bg-primary hover:bg-primary-hover'} text-slate-50 rounded-3xl cursor-hover transition ease-in duration-300`}
+                            onMouseEnter={() => setActive(index)}
+                            className={`text-center font-bold text-sm md:text-xl lg:text-4xl w-2/6 md:w-full h-16 md:h-24 mx-2 md:mx-0 my-5 flex flex-col justify-center items-center ${index === active ? 'bg-secondary' : 'bg-primary'} text-slate-50 rounded-3xl cursor-hover transition ease-in duration-300`}
                         >
                             {section.name}
                         </div>

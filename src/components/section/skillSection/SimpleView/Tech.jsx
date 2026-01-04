@@ -1,5 +1,3 @@
-import React from "react";
-
 import BallCanvas from "./Ball.jsx";
 
 const Tech = (icons) => {
