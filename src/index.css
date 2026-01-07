@@ -78,6 +78,13 @@ body {
         transition: all 1s ease;
     }
 
+    .loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     footer {
         position: absolute;
         bottom: 4rem;
@@ -222,6 +229,40 @@ body {
     @apply translate-x-0;
 }
 
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-600 {
+    transition-duration: 600ms;
+}
+
+/* Animation scale */
+.scale-90 {
+    transform: scale(0.9);
+}
+
+.scale-100 {
+    transform: scale(1);
+}
+
+.scale-105 {
+    transform: scale(1.05);
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 
 /********** Animation Keyframes **********/
 
@@ -329,6 +370,16 @@ body {
     from, to { border-color: transparent }
     50% { border-color: orange; }
 }
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 /********** Responsive **********/
 
 @media (max-width: 768px) {

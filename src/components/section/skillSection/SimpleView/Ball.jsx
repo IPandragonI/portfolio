@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
-import Loader from "../../../tool/Loader.jsx";
 
 const Ball = (props) => {
     const [decal] = useTexture([props.imgUrl]);
@@ -30,16 +29,16 @@ const Ball = (props) => {
     );
 };
 
-const BallCanvas = ({icon}) => {
+const BallCanvas = ({ icon, isTransitioning }) => {
     return (
         <Canvas
             frameloop='demand'
             dpr={[1, 2]}
-            gl={{preserveDrawingBuffer: true}}
+            gl={{ preserveDrawingBuffer: true }}
         >
-            <Suspense fallback={<Loader/>}>
+            <Suspense fallback={null}>
                 <OrbitControls enableZoom={false}/>
-                <Ball imgUrl={icon}/>
+                <Ball imgUrl={icon} isTransitioning={isTransitioning} />
             </Suspense>
 
             <Preload all/>

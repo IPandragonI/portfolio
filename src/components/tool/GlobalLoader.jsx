@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
 const GlobalLoader = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    useEffect(() => {
-        const handleLoad = () => {
-            setIsLoaded(true);
-        };
-
-        window.addEventListener('load', handleLoad);
-
-        return () => {
-            window.removeEventListener('load', handleLoad);
-        };
-    }, []);
-
     return (
-        <main className={`global-loader ${isLoaded ? 'loaded' : ''}`}>
-            <div className={'loader'}></div>
-            <footer>
-                <p>Developed by Mathys Farineau © 2025</p>
+        <main className="global-loader fixed inset-0 flex flex-col items-center justify-center bg-section-color z-50">
+            <div className="loader-container">
+                <div className="loader"></div>
+                <p className="mt-8 text-primary text-lg font-semibold animate-pulse">
+                    Chargement...
+                </p>
+            </div>
+            <footer className="absolute bottom-8">
+                <p className="text-text-color text-sm">
+                    Developed by Mathys Farineau © 2025
+                </p>
             </footer>
         </main>
     );

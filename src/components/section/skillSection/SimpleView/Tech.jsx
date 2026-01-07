@@ -1,11 +1,22 @@
+import React from "react";
 import BallCanvas from "./Ball.jsx";
 
-const Tech = (icons) => {
+const Tech = ({ icons, isTransitioning }) => {
     return (
-        <div className='flex flex-row flex-wrap justify-center gap-10'>
-            {icons.icons.map((technology) => (
-                <div className='w-24 h-24 md:w-36 md:h-36' key={technology.title}>
-                    <BallCanvas icon={technology.src} />
+        <div
+            className={`flex flex-row flex-wrap justify-center gap-10 transition-all duration-600 ${
+                isTransitioning ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+            }`}
+        >
+            {icons.map((technology) => (
+                <div
+                    className='w-24 h-24 md:w-36 md:h-36'
+                    key={technology.title}
+                >
+                    <BallCanvas
+                        icon={technology.src}
+                        isTransitioning={isTransitioning}
+                    />
                 </div>
             ))}
         </div>
