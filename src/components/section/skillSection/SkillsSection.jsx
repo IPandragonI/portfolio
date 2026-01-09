@@ -34,7 +34,7 @@ const SkillsSection = () => {
                             disabled={isTransitioning}
                             className={`text-center font-bold text-sm md:text-xl lg:text-4xl w-2/6 md:w-full h-16 md:h-24 mx-2 md:mx-0 my-5 flex flex-col justify-center items-center ${
                                 index === active ? 'bg-secondary' : 'bg-primary'
-                            } text-slate-50 rounded-3xl cursor-hover transition-all ease-in-out duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70`}
+                            } text-slate-50 rounded-3xl cursor-hover transition-all ease-in-out duration-300 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70 shadow-xl`}
                         >
                             {section.name}
                         </button>

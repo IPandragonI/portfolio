@@ -1,15 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import { ContactSection, HeroSection, ProjectSection, SkillsSection } from "./components/section";
-import { ScrollMouse, SectionIndicator } from "./components/tool";
+import React, {useEffect, useState} from 'react';
+import {ContactSection, HeroSection, ProjectSection, SkillsSection} from "./components/section";
+import {ScrollMouse, SectionIndicator} from "./components/tool";
 import useCustomCursor from "./hooks/useCustomCursor.js";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import GlobalLoader from './components/tool/GlobalLoader';
+
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || '';
+
+async function fetchProjectScreenshots(owner, repoName) {
+    try {
+        const url = `https://api.github.com/repos/${owner}/${repoName}/contents/captures`;
+
+        try {
+            const headers = GITHUB_TOKEN ? { 'Authorization': `Bearer ${GITHUB_TOKEN}` } : {};
+            const response = await fetch(url, { headers });
+            if (!response.ok) {
+                return [];
+            }
+
+            const files = await response.json();
+
+            const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
+            const imageFiles = files.filter(file =>
+                file.type === 'file' &&
+                imageExtensions.some(ext => file.name.toLowerCase().endsWith(ext))
+            );
+
+            return imageFiles.map(file => ({
+                name: file.name,
+                url: file.download_url
+            }));
+        } catch (e) {
+            console.error(`Error fetching capture folder for ${repoName}:`, e);
+            return [];
+        }
+    } catch (error) {
+        console.error(`Error fetching screenshots for ${repoName}:`, error);
+        return [];
+    }
+}
 
 async function fetchGitLabProjects() {
     try {
         const GITLAB_USERNAME = 'ipandragoni';
         const repos = [];
-        const userResp = await fetch('https://api.github.com/users/' + GITLAB_USERNAME + '/starred');
+        const headers = GITHUB_TOKEN ? { 'Authorization': `Bearer ${GITHUB_TOKEN}` } : {};
+        const userResp = await fetch('https://api.github.com/users/' + GITLAB_USERNAME + '/starred', { headers });
         if (!userResp.ok) {
             console.error('GitLab user lookup failed', userResp.status);
             return [];
@@ -20,18 +56,27 @@ async function fetchGitLabProjects() {
         } else {
             repos.push(...users);
         }
-
+        console.log(repos)
         const mapped = repos.map(p => ({
             name: p.name,
             description: p.description,
             link: p.html_url,
-            language: p.language,
+            owner: p.owner?.login || GITLAB_USERNAME,
+            topics: p.topics || [],
             updated_at: p.updated_at ? new Date(p.updated_at).getTime() : 0,
             created_at: p.created_at ? new Date(p.created_at).getTime() : 0,
         }));
 
         mapped.sort((a, b) => b.created_at - a.created_at);
-        return mapped;
+        return await Promise.all(
+            mapped.map(async (project) => {
+                const screenshots = await fetchProjectScreenshots(project.owner, project.name);
+                return {
+                    ...project,
+                    screenshots: screenshots
+                };
+            })
+        );
     } catch (error) {
         console.error('Error fetching GitLab projects:', error);
         return [];
